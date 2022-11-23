@@ -1,0 +1,32 @@
+[
+    {
+      "_id": "637e539e04c0d9d37e8c662a",
+      "picture": "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LiOR?ver=a069&q=90&m=6&h=201&w=358&b=%23FFFFFFFF&l=f&o=t&aim=true",
+      "title": "Surface Laptop 4 15”",
+      "company": "MICROSOFT",
+      "price": 550,
+      "condition": "excellent",
+      "address": "370 Harrison Place, Cataract, District Of Columbia, 4254",
+      "about": "Up to 17.5 hours of battery life based on typical Surface device usage. Testing conducted by Microsoft in February 2021 using preproduction software and preproduction 15” AMD Ryzen™ 7 Microsoft Surface® Edition processor, 8GB RAM device. Testing consisted of full battery discharge with a mixture of active use and modern standby. The active use portion consists of (1) a web browsing test accessing 8 popular websites over multiple open tabs, (2) a productivity test utilizing Microsoft Word, PowerPoint, Excel and Outlook, and (3) a portion of time with the device in use with idle applications. All settings were default except screen brightness was set to 150 nits with Auto-Brightness disabled. Wi-Fi was connected to a network. Battery life varies significantly with settings, usage and other factors."
+    },
+    {
+      "_id": "637e539ee135a09200d30b94",
+      "picture": "https://www.startech.com.bd/image/cache/catalog/laptop/dell/inspiron-15-3511/inspiron-15-3511-88989-228x228.jpg",
+      "title": "Dell Inspiron 15 3511",
+      "company": "American technology company",
+      "price": 290,
+      "condition": "good",
+      "address": "943 Summit Street, Goochland, Maryland, 147",
+      "about": "Dell Inspiron is a Windows 10 laptop with a 15.60-inch display that has a resolution of 1920x1080 pixels. It is powered by a APU Quad Core A6 processor and it comes with 8GB of RAM. The Dell Inspiron packs 1TB of HDD storage.Graphics are powered by Nvidia GeForce GTX 1050. Connectivity options include Wi-Fi 802.11 ac, Bluetooth, Ethernet and it comes with Mic In, RJ45 (LAN) ports."
+    },
+    {
+      "_id": "637e539e7d0b5c9ffb4884be",
+      "picture": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c07955070.png?imwidth=270&imdensity=1",
+      "title": "HP Pavilion Laptop 15",
+      "company": "VANTAGE",
+      "price": 370,
+      "condition": "fair",
+      "address": "564 Paerdegat Avenue, Celeryville, Connecticut, 6094",
+      "about": "Windows 11 HomeIntel® Core™ i7-1255U (up to 4.7 GHz, 12 MB L3 cache, 10 cores, 12 threads) + Intel® Iris® Xe Graphics16 GB DDR4-3200 SDRAM (2 x 8 GB)512 GB PCIe® NVMe™ M.2 SSD"
+    }
+  ]
