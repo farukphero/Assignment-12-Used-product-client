@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import Button from "../../../Components/Button/Button";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
 const NavBar = () => {
@@ -11,21 +12,39 @@ const NavBar = () => {
 
     const menuItems= (
         <React.Fragment>
-          <li>
+          {/* <li>
             <Link to="/">Home</Link>
+          </li> */}
+          {/* <li>
+            <Link className="text-xl" to="/appointment">Advertised items</Link>
+          </li> */}
+          <li>
+            <Link className="text-xl" to="/categories">Categories </Link>
+          </li>
+          {/* <li>
+            <Link className="text-xl" to="/contact">Contact</Link>
+          </li> */}
+          <li>
+            <Link className="text-xl" to="/myorders">My orders</Link>
           </li>
           <li>
-            <Link to="/appointment">Advertised items</Link>
+            <Link className="text-xl" to="/addproduct"> Add Product</Link>
           </li>
           <li>
-            <Link to="/categories">Categories </Link>
+            <Link className="text-xl" to="/myproducts">My Products </Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <Link className="text-xl" to="/allsellers">All Sellers</Link>
+          </li>
+          <li>
+            <Link className="text-xl" to="/allbuyers">All Buyers</Link>
+          </li>
+          <li>
+            <Link className="text-xl" to="/reportedItems">Reported Items</Link>
           </li>
           <li>
            {
-            user? <button onClick={handleLogOut}>LogOut</button > :  <Link to="/login">LogIn</Link>
+            user? <button className="text-xl rounded-lg" onClick={handleLogOut}>LogOut</button > :  <Link className="text-xl" to="/login">LogIn</Link>
            }
           </li>
         </React.Fragment>
@@ -59,7 +78,7 @@ const NavBar = () => {
                {menuItems}
             </ul>
           </div>
-          <Link to='/' className="btn btn-ghost normal-case text-3xl font-bold">Aranoz.</Link>
+          <Link to='/' className="normal-case text-secondary text-3xl font-bold">Aranoz.</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
@@ -67,7 +86,7 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Get started</a>
+           <Button>wow</Button>
         </div>
       </div>
     </div>

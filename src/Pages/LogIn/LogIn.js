@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider } from "firebase/auth";
 
-// import Header from "./Header";
 
 const LogIn = () => {
   const { register, handleSubmit } = useForm();
@@ -14,6 +13,8 @@ const LogIn = () => {
   const provider = new GoogleAuthProvider();
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (data) => {
     console.log(data);
@@ -28,7 +29,7 @@ const LogIn = () => {
     providerGoogleLogIn(provider)
     .then((result) => {
         const user = result.user;
-        navigate('/')
+        navigate(from, { replace: true });
 
       })
       .catch((error) => console.log(error));
@@ -44,7 +45,7 @@ const LogIn = () => {
       </div>
       <div className="lg:h-[600px] flex items-center">
         <div>
-          <h1 className="text-4xl mb-6 text-blue-400">
+          <h1 className="text-4xl mb-6 text-secondary">
             Log in to your account
           </h1>
           <form onSubmit={handleSubmit(handleLogin)}>
@@ -82,20 +83,20 @@ const LogIn = () => {
               </select>
             </div>
             <input
-              className="btn btn-primary mb-10"
+              className="btn btn-primary text-white mb-10 w-full bg-gradient-to-r from-primary to-secondary"
               type="submit"
               value="Log In"
             />
             <p>
-              Don't have an account?{" "}
-              <Link className="underline text-blue-600 w-full" to="/signup">
+              Don't have an account?
+              <Link className="underline text-secondary w-full " to="/signup">
                 Sign Up
               </Link>
             </p>
             {/* <p>{data}</p> */}
             <div className="flex flex-col w-full border-opacity-50">
               <div className="divider">OR</div>
-             <button onClick={handleGoogleLogin} className="btn btn-outline w-full"><FcGoogle  className="mr-2 w-8 h-8"/>  Google</button>
+             <button onClick={handleGoogleLogin} className="btn btn-outline hover:bg-gradient-to-r from-primary to-secondary hover:border-none w-full"><FcGoogle  className="mr-2 w-8 h-8"/>  Google</button>
             </div>
           </form>
         </div>

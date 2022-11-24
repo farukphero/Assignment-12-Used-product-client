@@ -13,7 +13,7 @@ const Category = ({ category }) => {
         <div className="card-body items-center text-center">
           <h2 className="card-title">{title}</h2>
           <p>{about}</p>
-          <button className="btn btn-outline"><Link to={`/products/${_id}`}>See All Products</Link></button>
+          <button className="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary "><Link to={`/products/${_id}`}>See All Products</Link></button>
           {/* <div className="card-actions">
             <button className="btn btn-primary"> </button>
           </div> */}

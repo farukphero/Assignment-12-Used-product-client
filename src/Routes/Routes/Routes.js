@@ -1,10 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
+import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
+import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
+import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
+import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
+import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
+import ReportedItems from "../../Pages/Dashboard/ReportedItems/ReportedItems";
 import Categories from "../../Pages/Home/Categories/Categories";
 import Home from "../../Pages/Home/Home/Home";
 import Products from "../../Pages/Home/Products/Products";
 import LogIn from "../../Pages/LogIn/LogIn";
 import SignUp from "../../Pages/SignUp/SignUp";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -20,8 +27,32 @@ export const router = createBrowserRouter([
         element: <Categories></Categories>,
       },
       {
+        path: "/myorders",
+        element: <MyOrders></MyOrders>,
+      },
+      {
+        path: "/addproduct",
+        element: <AddProduct></AddProduct>,
+      },
+      {
+        path: "/myproducts",
+        element: <MyProducts></MyProducts>,
+      },
+      {
+        path: "/allsellers",
+        element: <AllSellers></AllSellers>,
+      },
+      {
+        path: "/allbuyers",
+        element: <AllBuyers></AllBuyers>,
+      },
+      {
+        path: "/reportedItems",
+        element: <ReportedItems></ReportedItems>,
+      },
+      {
         path: "/products/:id",
-        element: <Products></Products>,
+        element: <PrivateRoute><Products></Products></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`),
       },
 

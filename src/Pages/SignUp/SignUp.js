@@ -1,22 +1,37 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider } from "firebase/auth";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
+  const [error, setError] = useState('')
   const { register, handleSubmit } = useForm();
-//   const [data, setData] = useState("");
-  const { createUserByEmail,providerGoogleLogIn } = useContext(AuthContext);
+  const { createUserByEmail, providerGoogleLogIn, updateUser} = useContext(AuthContext);
   const navigate= useNavigate()
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const provider = new GoogleAuthProvider();
 
   const handleSignUp = (data) => {
+    setError('')
+     
     createUserByEmail(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        navigate('/')
+        console.log(user)
+        toast.success('User Created Successful')
+        navigate(from, { replace: true });
+        const  profile = {
+            displayName : data.name,
+            category: data.category
+        }
+        updateUser(profile)
+        .then(()=>{})
+        .catch(error=> {setError(error.message)
+        console.log(error)})
 
       })
       .catch((error) => console.log(error));
@@ -26,11 +41,12 @@ const SignUp = () => {
     providerGoogleLogIn(provider)
     .then((result) => {
         const user = result.user;
-        navigate('/')
+        navigate(from, { replace: true });
 
       })
       .catch((error) => console.log(error));
   }
+
   return (
     <div className="lg:flex justify-center">
       <div>
@@ -42,7 +58,7 @@ const SignUp = () => {
       </div>
       <div className="lg:h-[600px] flex items-center">
         <div>
-          <h1 className="text-4xl  mb-6 text-blue-400">Create your account</h1>
+          <h1 className="text-4xl  mb-6 text-secondary">Create your account</h1>
           <form
             onSubmit={handleSubmit(handleSignUp)}
           >
@@ -91,18 +107,19 @@ const SignUp = () => {
               </select>
             </div>
             <input
-              className="btn btn-primary mb-10"
+              className="text-white btn btn-primary mb-10 w-full bg-gradient-to-r from-primary to-secondary"
               type="submit"
               value="Sign Up"
             />
+            <p>{error}</p>
             <p>
-              Already have an account?{" "}
-              <Link className="underline text-blue-600" to="/login">
+              Already have an account?
+              <Link className="underline text-secondary" to="/login">
                 Log In
               </Link>
             </p>
             <div className="divider">OR</div>
-            <button onClick={handleGoogleSignUp} className="btn btn-outline w-full"><FcGoogle  className="mr-2 w-8 h-8"/>  Google</button>
+            <button onClick={handleGoogleSignUp} className="btn btn-outline hover:bg-gradient-to-r from-primary to-secondary hover:border-none w-full"><FcGoogle  className="mr-2 w-8 h-8"/>  Google</button>
             {/* <p>{data}</p> */}
           </form>
         </div>
