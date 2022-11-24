@@ -1,27 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 
-// import Header from "./Header";
-
-const LogIn = () => {
+const SignUp = () => {
   const { register, handleSubmit } = useForm();
-  // const [data, setData] = useState("");
-  const { accountLogIn } = useContext(AuthContext);
+//   const [data, setData] = useState("");
+  const { createUserByEmail } = useContext(AuthContext);
+  const navigate= useNavigate()
 
-  const navigate = useNavigate();
-
-  const handleLogin = (data) => {
-    console.log(data);
-    accountLogIn(data.email, data.password)
+  const handleSignUp = (data) => {
+    createUserByEmail(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        navigate("/");
+        navigate('/')
+
       })
       .catch((error) => console.log(error));
   };
-
   return (
     <div className="lg:flex justify-center">
       <div>
@@ -33,11 +29,22 @@ const LogIn = () => {
       </div>
       <div className="lg:h-[600px] flex items-center">
         <div>
-          <h1 className="text-4xl mb-6 text-blue-400">
-            Log in to your account
-          </h1>
-          <form onSubmit={handleSubmit(handleLogin)}>
+          <h1 className="text-4xl  mb-6 text-blue-400">Create your account</h1>
+          <form
+            onSubmit={handleSubmit(handleSignUp)}
+          >
             {/* <Header /> */}
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                {...register("name", { required: true })}
+                type="text"
+                placeholder="Enter Your Name"
+                className="input input-bordered w-full lg:w-96"
+              />
+            </div>
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -73,18 +80,15 @@ const LogIn = () => {
             <input
               className="btn btn-primary mb-10"
               type="submit"
-              value="Log In"
+              value="Sign Up"
             />
             <p>
-              Don't have an account?{" "}
-              <Link className="underline text-blue-600 w-full" to="/signup">
-                Sign Up
+              Already have an account?{" "}
+              <Link className="underline text-blue-600" to="/login">
+                Log In
               </Link>
             </p>
             {/* <p>{data}</p> */}
-            <div className="flex flex-col w-full border-opacity-50">
-              <div className="divider">OR</div>
-            </div>
           </form>
         </div>
       </div>
@@ -92,4 +96,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default SignUp;
