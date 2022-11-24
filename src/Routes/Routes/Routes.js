@@ -10,6 +10,7 @@ import Categories from "../../Pages/Home/Categories/Categories";
 import Home from "../../Pages/Home/Home/Home";
 import Products from "../../Pages/Home/Products/Products";
 import LogIn from "../../Pages/LogIn/LogIn";
+import ErrorPage from "../../Pages/Shared/ErrorPage/ErrorPage";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
@@ -36,7 +37,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myproducts",
-        element: <MyProducts></MyProducts>,
+        element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>,
       },
       {
         path: "/allsellers",
@@ -104,10 +105,10 @@ export const router = createBrowserRouter([
   //       loader: ({ params }) =>
   //         fetch(`https://fly-plane-web-server.vercel.app/services/${params.id}`),
   //     },
-  //     {
-  //       path: "*",
-  //       element: (
-  //         <h1 className="text-center text-4xl text-blue-500">404 page not found</h1>
-  //       ),
-  //     },
+      {
+        path: "*",
+        element: (
+            <ErrorPage></ErrorPage>
+        ),
+      },
 ]);

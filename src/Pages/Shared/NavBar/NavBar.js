@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../../Components/Button/Button";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
+import { FaUserCircle } from "react-icons/fa";
 
 const NavBar = () => {
  const {user ,logOut} = useContext(AuthContext)
@@ -86,7 +87,9 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-           <Button>wow</Button>
+           {
+            user?.photoURL? <img title={user.displayName} className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />: <FaUserCircle  className="mr-2 w-10 h-10"/> 
+           }
         </div>
       </div>
     </div>

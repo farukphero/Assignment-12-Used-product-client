@@ -1,11 +1,44 @@
-import React from 'react';
+import React, { useContext } from "react";
+import { useQuery } from "react-query";
+import Button from "../../../Components/Button/Button";
+import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
 const MyProducts = () => {
-    return (
-        <div>
-            
+    const {user}= useContext(AuthContext)
+    const {data: newproducts = [],} = useQuery({
+        queryKey: ['newproducts', user.email],
+        queryFn: async() =>{
+            const res = await fetch(`http://localhost:5000/newproducts?email=${user.email}`);
+            const data = await res.json();
+            return data;
+        }
+    });
+    
+    console.log(newproducts)
+  return (
+    <div className="my-10">
+        skaeffffffidhs
+     {
+        newproducts.map(product=><div className="card lg:card-side bg-base-100 shadow-xl">
+        <figure>
+          <img className="w-96 h-96" src={product.data.image} alt="Album" />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">{product.data.name}</h2>
+          <p> {product.data.description}</p>
+          <div className="card-actions justify-end">
+            <Button>Availabe</Button>
+           <Button>Delete</Button>
+          </div>
         </div>
-    );
+      </div>
+            )
+     }
+
+
+    
+    </div>
+  );
 };
 
 export default MyProducts;

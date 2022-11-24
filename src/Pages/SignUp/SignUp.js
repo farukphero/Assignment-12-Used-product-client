@@ -98,7 +98,7 @@ const SignUp = () => {
             </div>
             <div>
               <select
-                className="my-5"
+                className="my-5 w-full"
                 {...register("category", { required: true })}
               >
                 <option value="">Select Category...</option>
