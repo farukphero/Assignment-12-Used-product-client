@@ -1,13 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const SignUp = () => {
   const { register, handleSubmit } = useForm();
 //   const [data, setData] = useState("");
-  const { createUserByEmail } = useContext(AuthContext);
+  const { createUserByEmail,providerGoogleLogIn } = useContext(AuthContext);
   const navigate= useNavigate()
+  const provider = new GoogleAuthProvider();
 
   const handleSignUp = (data) => {
     createUserByEmail(data.email, data.password)
@@ -18,6 +21,16 @@ const SignUp = () => {
       })
       .catch((error) => console.log(error));
   };
+
+  const handleGoogleSignUp=()=>{
+    providerGoogleLogIn(provider)
+    .then((result) => {
+        const user = result.user;
+        navigate('/')
+
+      })
+      .catch((error) => console.log(error));
+  }
   return (
     <div className="lg:flex justify-center">
       <div>
@@ -88,6 +101,8 @@ const SignUp = () => {
                 Log In
               </Link>
             </p>
+            <div className="divider">OR</div>
+            <button onClick={handleGoogleSignUp} className="btn btn-outline w-full"><FcGoogle  className="mr-2 w-8 h-8"/>  Google</button>
             {/* <p>{data}</p> */}
           </form>
         </div>

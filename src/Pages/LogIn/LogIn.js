@@ -2,13 +2,16 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
+import { GoogleAuthProvider } from "firebase/auth";
 
 // import Header from "./Header";
 
 const LogIn = () => {
   const { register, handleSubmit } = useForm();
   // const [data, setData] = useState("");
-  const { accountLogIn } = useContext(AuthContext);
+  const { accountLogIn,providerGoogleLogIn } = useContext(AuthContext);
+  const provider = new GoogleAuthProvider();
 
   const navigate = useNavigate();
 
@@ -21,7 +24,15 @@ const LogIn = () => {
       })
       .catch((error) => console.log(error));
   };
+  const handleGoogleLogin=()=>{
+    providerGoogleLogIn(provider)
+    .then((result) => {
+        const user = result.user;
+        navigate('/')
 
+      })
+      .catch((error) => console.log(error));
+  }
   return (
     <div className="lg:flex justify-center">
       <div>
@@ -84,6 +95,7 @@ const LogIn = () => {
             {/* <p>{data}</p> */}
             <div className="flex flex-col w-full border-opacity-50">
               <div className="divider">OR</div>
+             <button onClick={handleGoogleLogin} className="btn btn-outline w-full"><FcGoogle  className="mr-2 w-8 h-8"/>  Google</button>
             </div>
           </form>
         </div>
