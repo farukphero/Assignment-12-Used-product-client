@@ -7,46 +7,66 @@ import { GoogleAuthProvider } from "firebase/auth";
 import toast from "react-hot-toast";
 
 const SignUp = () => {
-  const [error, setError] = useState('')
+  const [error, setError] = useState("");
   const { register, handleSubmit } = useForm();
-  const { createUserByEmail, providerGoogleLogIn, updateUser} = useContext(AuthContext);
-  const navigate= useNavigate()
+  const { createUserByEmail, providerGoogleLogIn, updateUser } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const provider = new GoogleAuthProvider();
 
   const handleSignUp = (data) => {
-    setError('')
-     
+    setError("");
     createUserByEmail(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        console.log(user)
-        toast.success('User Created Successful')
-        navigate(from, { replace: true });
-        const  profile = {
-            displayName : data.name,
-            category: data.category
-        }
+        toast.success("User Created Successful");
+        const profile = {
+          displayName: data.name,
+          role: data.role,
+        };
         updateUser(profile)
-        .then(()=>{})
-        .catch(error=> {setError(error.message)
-        console.log(error)})
-
+          .then(() => {
+            saveUser(data.name, data.email, data.role);
+          })
+          .catch((error) => {
+            setError(error.message);
+            console.log(error);
+          });
       })
       .catch((error) => console.log(error));
   };
 
-  const handleGoogleSignUp=()=>{
+  const handleGoogleSignUp = () => {
     providerGoogleLogIn(provider)
-    .then((result) => {
+      .then((result) => {
         const user = result.user;
         navigate(from, { replace: true });
-
       })
       .catch((error) => console.log(error));
-  }
+  };
 
+  const saveUser = (name, email, role) => {
+    const user = {
+      name,
+      email,
+      role,
+    };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log('save user',data)
+        navigate(from, { replace: true });
+        // navigate('/')
+      });
+  };
   return (
     <div className="lg:flex justify-center">
       <div>
@@ -59,10 +79,7 @@ const SignUp = () => {
       <div className="lg:h-[600px] flex items-center">
         <div>
           <h1 className="text-4xl  mb-6 text-secondary">Create your account</h1>
-          <form
-            onSubmit={handleSubmit(handleSignUp)}
-          >
-            {/* <Header /> */}
+          <form onSubmit={handleSubmit(handleSignUp)}>
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -99,7 +116,7 @@ const SignUp = () => {
             <div>
               <select
                 className="my-5 w-full"
-                {...register("category", { required: true })}
+                {...register("role", { required: true })}
               >
                 <option value="">Select Category...</option>
                 <option value="seller">Seller</option>
@@ -119,7 +136,12 @@ const SignUp = () => {
               </Link>
             </p>
             <div className="divider">OR</div>
-            <button onClick={handleGoogleSignUp} className="btn btn-outline hover:bg-gradient-to-r from-primary to-secondary hover:border-none w-full"><FcGoogle  className="mr-2 w-8 h-8"/>  Google</button>
+            <button
+              onClick={handleGoogleSignUp}
+              className="btn btn-outline hover:bg-gradient-to-r from-primary to-secondary hover:border-none w-full"
+            >
+              <FcGoogle className="mr-2 w-8 h-8" /> Google
+            </button>
             {/* <p>{data}</p> */}
           </form>
         </div>

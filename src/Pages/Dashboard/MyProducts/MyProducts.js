@@ -13,11 +13,8 @@ const MyProducts = () => {
             return data;
         }
     });
-    
-    console.log(newproducts)
   return (
     <div className="my-10">
-        skaeffffffidhs
      {
         newproducts.map(product=><div className="card lg:card-side bg-base-100 shadow-xl">
         <figure>
