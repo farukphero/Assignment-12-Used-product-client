@@ -1,27 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider } from "firebase/auth";
+import useToken from "../../hooks/useToken";
 
 
 const LogIn = () => {
   const { register, handleSubmit } = useForm();
-  // const [data, setData] = useState("");
   const { accountLogIn,providerGoogleLogIn } = useContext(AuthContext);
   const provider = new GoogleAuthProvider();
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  const [logInUserEmail, setLogInUserEmail] = useState("");
+  const [token] = useToken(logInUserEmail)
+   
+if(token){
+  navigate(from, { replace: true });
+}
+
 
   const handleLogin = (data) => {
     // console.log(data);
     accountLogIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        navigate("/");
+        setLogInUserEmail(data.email)
+        // navigate("/");
       })
       .catch((error) => console.log(error));
   };
@@ -29,7 +37,8 @@ const LogIn = () => {
     providerGoogleLogIn(provider)
     .then((result) => {
         const user = result.user;
-        navigate(from, { replace: true });
+        setLogInUserEmail(user.email)
+       
 
       })
       .catch((error) => console.log(error));

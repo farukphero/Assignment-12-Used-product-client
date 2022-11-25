@@ -28,7 +28,7 @@ const AuthProvider = ({ children }) => {
     return updateProfile(auth.currentUser, profile)
   };
   const logOut = () => {
-    // localStorage.removeItem('token')
+    localStorage.removeItem('accessToken')
     setLoading(true);
     return signOut(auth);
   };

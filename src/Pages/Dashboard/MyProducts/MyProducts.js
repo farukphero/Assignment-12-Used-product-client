@@ -4,11 +4,18 @@ import Button from "../../../Components/Button/Button";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
 const MyProducts = () => {
-    const {user}= useContext(AuthContext)
-    const {data: newproducts = [],} = useQuery({
-        queryKey: ['newproducts', user.email],
+    const {user, logOut}= useContext(AuthContext)
+    const {data: newproducts = []} = useQuery({
+        queryKey: ['newproducts', user?.email],
         queryFn: async() =>{
-            const res = await fetch(`http://localhost:5000/newproducts?email=${user.email}`);
+            const res = await fetch(`http://localhost:5000/newproducts?email=${user.email}`,{
+              headers:{
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+              }
+            });
+            if(res.status === 401 || res.status === 403){
+              logOut()
+            }
             const data = await res.json();
             return data;
         }

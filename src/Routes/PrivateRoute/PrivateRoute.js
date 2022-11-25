@@ -18,11 +18,11 @@ const PrivateRoute = ({children}) => {
    </div>
   }
 
-     if(!user){
+     if(user){
         // alert('Please Log in before see all resale products')
-        return <Navigate to='/login' state={{from: location}} replace></Navigate>
-     }
-     return children;
+        return children;
+      }
+      return <Navigate to='/login' state={{from: location}} replace></Navigate>
 };
 
 export default PrivateRoute;

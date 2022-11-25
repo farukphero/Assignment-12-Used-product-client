@@ -12,6 +12,7 @@ import Products from "../../Pages/Home/Products/Products";
 import LogIn from "../../Pages/LogIn/LogIn";
 import ErrorPage from "../../Pages/Shared/ErrorPage/ErrorPage";
 import SignUp from "../../Pages/SignUp/SignUp";
+import AdminRoute from "../AdmitRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -33,7 +34,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/addproduct",
-        element: <AddProduct></AddProduct>,
+        element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>,
       },
       {
         path: "/myproducts",
@@ -41,15 +42,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/allsellers",
-        element: <AllSellers></AllSellers>,
+        element: <AdminRoute><AllSellers></AllSellers></AdminRoute>,
       },
       {
         path: "/allbuyers",
-        element: <AllBuyers></AllBuyers>,
+        element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>,
       },
       {
         path: "/reportedItems",
-        element: <ReportedItems></ReportedItems>,
+        element: <AdminRoute><ReportedItems></ReportedItems></AdminRoute>,
       },
       {
         path: "/products/:id",

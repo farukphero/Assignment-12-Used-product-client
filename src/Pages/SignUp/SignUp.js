@@ -5,16 +5,22 @@ import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider } from "firebase/auth";
 import toast from "react-hot-toast";
+import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
   const [error, setError] = useState("");
   const { register, handleSubmit } = useForm();
-  const { createUserByEmail, providerGoogleLogIn, updateUser } =
-    useContext(AuthContext);
+  const { createUserByEmail, providerGoogleLogIn, updateUser } = useContext(AuthContext);
+  const provider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  const provider = new GoogleAuthProvider();
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const [token] = useToken(createdUserEmail);
+
+  if(token){
+    navigate(from, { replace: true });
+  }
 
   const handleSignUp = (data) => {
     setError("");
@@ -24,11 +30,11 @@ const SignUp = () => {
         toast.success("User Created Successful");
         const profile = {
           displayName: data.name,
-          role: data.role,
+          category: data.category,
         };
         updateUser(profile)
           .then(() => {
-            saveUser(data.name, data.email, data.role);
+            saveUser(data.name, data.email, data.category);
           })
           .catch((error) => {
             setError(error.message);
@@ -42,16 +48,19 @@ const SignUp = () => {
     providerGoogleLogIn(provider)
       .then((result) => {
         const user = result.user;
-        navigate(from, { replace: true });
+        saveUser(user?.displayName, user?.email);
+        // navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));
   };
 
-  const saveUser = (name, email, role) => {
+  const saveUser = (name, email, category, userName, userEmail) => {
     const user = {
       name,
       email,
-      role,
+      category,
+      userName,
+      userEmail,
     };
     fetch("http://localhost:5000/users", {
       method: "POST",
@@ -63,10 +72,11 @@ const SignUp = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log('save user',data)
-        navigate(from, { replace: true });
+        setCreatedUserEmail(email);
         // navigate('/')
       });
   };
+
   return (
     <div className="lg:flex justify-center">
       <div>
@@ -116,7 +126,7 @@ const SignUp = () => {
             <div>
               <select
                 className="my-5 w-full"
-                {...register("role", { required: true })}
+                {...register("category", { required: true })}
               >
                 <option value="">Select Category...</option>
                 <option value="seller">Seller</option>
