@@ -48,7 +48,8 @@ const SignUp = () => {
     providerGoogleLogIn(provider)
       .then((result) => {
         const user = result.user;
-        saveUser(user?.displayName, user?.email);
+        const category = 'buyer'
+        saveUser(user?.displayName, user?.email,category);
         // navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));

@@ -3,11 +3,16 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import { FaUserCircle } from "react-icons/fa";
 import useAdmin from "../../../hooks/useAdmin";
+import useSeller from "../../../hooks/useSeller";
+import useBuyer from "../../../hooks/useBuyer";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   const [isAdmin] = useAdmin(user?.email);
+  const [isSeller] = useSeller(user?.email);
+  const [isBuyer] = useBuyer(user?.email);
+
 
   const handleLogOut = () => {
     logOut();
@@ -15,26 +20,23 @@ const NavBar = () => {
 
   const menuItems = (
     <React.Fragment>
-      {/* <li>
-            <Link to="/">Home</Link>
-          </li> */}
-      {/* <li>
-            <Link className="text-xl" to="/appointment">Advertised items</Link>
-          </li> */}
+      <li>
+            <Link className="text-xl" to="/advertiseditem">Advertised items</Link>
+          </li>
       <li>
         <Link className="text-xl" to="/categories">
-          Categories{" "}
+          Categories
         </Link>
       </li>
-      {/* <li>
-            <Link className="text-xl" to="/contact">Contact</Link>
-          </li> */}
-      <li>
+     {
+      isBuyer &&  <li>
         <Link className="text-xl" to="/myorders">
           My orders
         </Link>
       </li>
-      <li>
+     }
+       {
+        isSeller && <> <li>
         <Link className="text-xl" to="/addproduct">
           Add Product
         </Link>
@@ -43,8 +45,9 @@ const NavBar = () => {
         <Link className="text-xl" to="/myproducts">
           My Products
         </Link>
-      </li>
-      {isAdmin && (
+      </li></>
+       }
+      {isAdmin && 
         <>
           <li>
             <Link className="text-xl" to="/allsellers">
@@ -62,7 +65,7 @@ const NavBar = () => {
             </Link>
           </li>
         </>
-      )}
+      }
       <li>
         {user ? (
           <button className="text-xl rounded-lg" onClick={handleLogOut}>

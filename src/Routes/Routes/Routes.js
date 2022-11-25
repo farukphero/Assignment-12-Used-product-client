@@ -13,7 +13,9 @@ import LogIn from "../../Pages/LogIn/LogIn";
 import ErrorPage from "../../Pages/Shared/ErrorPage/ErrorPage";
 import SignUp from "../../Pages/SignUp/SignUp";
 import AdminRoute from "../AdmitRoute/AdminRoute";
+import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 export const router = createBrowserRouter([
   {
@@ -30,15 +32,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myorders",
-        element: <MyOrders></MyOrders>,
+        element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>,
       },
       {
         path: "/addproduct",
-        element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>,
+        element: <SellerRoute><PrivateRoute><AddProduct></AddProduct></PrivateRoute></SellerRoute>,
       },
       {
         path: "/myproducts",
-        element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>,
+        element: <SellerRoute><PrivateRoute><MyProducts></MyProducts></PrivateRoute></SellerRoute>,
       },
       {
         path: "/allsellers",

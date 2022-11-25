@@ -17,7 +17,7 @@ const AddProduct = () => {
     // console.log(newAddedProducts)
     // console.log(data)
 
-    // navigate("/myproducts");
+    navigate("/myproducts");
     toast.success("Product Added");
     fetch("http://localhost:5000/newproducts", {
       method: "POST",

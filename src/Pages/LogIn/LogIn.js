@@ -78,10 +78,10 @@ if(token){
                 {...register("password", { required: true })}
                 type="password"
                 placeholder="Password"
-                className="input input-bordered w-full lg:w-96"
+                className="input input-bordered w-full lg:w-96 mb-6"
               />
             </div>
-            <div>
+            {/* <div>
               <select
                 className="my-5 w-full"
                 {...register("category", { required: true })}
@@ -90,15 +90,14 @@ if(token){
                 <option value="seller">Seller</option>
                 <option value="buyer"> Buyer</option>
               </select>
-            </div>
+            </div> */}
             <input
               className="btn btn-primary text-white mb-10 w-full bg-gradient-to-r from-primary to-secondary"
               type="submit"
               value="Log In"
             />
             <p>
-              Don't have an account?
-              <Link className="underline text-secondary w-full " to="/signup">
+              Don't have an account ? <Link className="underline text-secondary w-full " to="/signup">
                 Sign Up
               </Link>
             </p>

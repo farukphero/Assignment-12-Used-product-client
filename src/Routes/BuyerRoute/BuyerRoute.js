@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
-import useAdmin from "../../hooks/useAdmin";
+import useBuyer from "../../hooks/useBuyer";
 
-const AdminRoute = ({ children }) => {
+const BuyerRoute = ({ children }) => {
   const { user, loading, logOut } = useContext(AuthContext);
-  const [isAdmin, isAdminLoading] = useAdmin(user?.email);
+  const [isBuyer, isBuyerLoading] = useBuyer(user?.email);
   const location = useLocation();
 
-  if (loading || isAdminLoading) {
+  if (loading || isBuyerLoading) {
     return (
       <div>
         <div class="text-center">
@@ -25,11 +25,11 @@ const AdminRoute = ({ children }) => {
     );
   }
 
-  if (user && isAdmin) {
+  if (user && isBuyer) {
     return children;
   }
-  // logOut();
+//   logOut();
   return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
 };
 
-export default AdminRoute;
+export default BuyerRoute;
