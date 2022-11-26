@@ -85,6 +85,7 @@ const AddProduct = () => {
               <span className="label-text">Select Product Category</span>
             </label>
             <select name='category'
+            required
               // {...register("category", { required: true })}
               className="select select-bordered w-full"
             >
@@ -104,6 +105,7 @@ const AddProduct = () => {
               // {...register("name", { required: true })}
               type="text"
               name= 'name'
+              required
               placeholder="Enter Your Product Name"
               className="input input-bordered w-full lg:w-96"
             />
@@ -116,6 +118,7 @@ const AddProduct = () => {
               // {...register("image", { required: true })}
               type="text"
               name='image'
+              required
               placeholder="Enter Your Product Image URL"
               className="input input-bordered w-full lg:w-96"
             />
@@ -128,6 +131,7 @@ const AddProduct = () => {
               // {...register("originalprice", { required: true })}
               type="text"
               name='originalprice'
+              required
               placeholder="Original Price"
               className="input input-bordered w-full lg:w-96"
             />
@@ -141,6 +145,7 @@ const AddProduct = () => {
               // {...register("resaleprice", { required: true })}
               type="text"
               name= 'resaleprice'
+              required
               placeholder="Resale Price"
               className="input input-bordered w-full lg:w-96"
             />
@@ -153,6 +158,7 @@ const AddProduct = () => {
               // {...register("purchase", { required: true })}
               type="text"
               name='purchase'
+              required
               placeholder="Year of purchase"
               className="input input-bordered w-full lg:w-96"
             />
@@ -165,6 +171,7 @@ const AddProduct = () => {
               // {...register("phone", { required: true })}
               type="text"
               name='phone'
+              required
               placeholder="Phone Number"
               className="input input-bordered w-full lg:w-96"
             />
@@ -177,6 +184,7 @@ const AddProduct = () => {
               // {...register("location", { required: true })}
               type="text"
               name ='location'
+              required
               placeholder="Location"
               className="input input-bordered w-full lg:w-96"
             />
@@ -186,6 +194,7 @@ const AddProduct = () => {
               <span className="label-text">Select Product Condition</span>
             </label>
             <select name='condition'
+            required
               // {...register("condition", { required: true })}
               className="select select-bordered w-full"
             >
@@ -204,6 +213,7 @@ const AddProduct = () => {
             <textarea
               // {...register("description", { required: true })}
               name='description'
+              required
               className="textarea textarea-bordered w-full"
               placeholder="Description"
             ></textarea>
