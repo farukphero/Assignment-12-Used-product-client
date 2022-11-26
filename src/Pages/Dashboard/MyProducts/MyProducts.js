@@ -28,9 +28,9 @@ const MyProducts = () => {
       {newproducts.map((product) => (
         <div className="card lg:card-side bg-base-100 shadow-xl">
           <figure>
-            <img className="w-96 h-96" src={product.data.image} alt="Album" />
+            <img className="w-full h-96 " src={product.data.image} alt="Album" />
           </figure>
-          <div className="card-body">
+          <div className="card-body md:w-1/2">
             <h2 className="card-title">{product.data.name}</h2>
             <p> {product.data.description}</p>
             <p>
@@ -51,7 +51,7 @@ const MyProducts = () => {
           <p>
             <span className="font-bold">Post date </span>: {product?.date}
           </p>
-            <div className="card-actions justify-end">
+            <div className="card-actions justify-between md:justify-end">
               <Button>Availabe</Button>
               <Button>Delete</Button>
             </div>

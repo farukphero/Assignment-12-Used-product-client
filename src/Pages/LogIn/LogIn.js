@@ -8,8 +8,9 @@ import useToken from "../../hooks/useToken";
 
 
 const LogIn = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, formState: { errors }, handleSubmit } = useForm();
   const { accountLogIn,providerGoogleLogIn } = useContext(AuthContext);
+  const [logInError, setLoginError] = useState('')
   const provider = new GoogleAuthProvider();
 
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ if(token){
         setLogInUserEmail(data.email)
         // navigate("/");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => setLoginError(error.message));
   };
   const handleGoogleLogin=()=>{
     providerGoogleLogIn(provider)
@@ -70,6 +71,7 @@ if(token){
                 className="input input-bordered w-full lg:w-96"
               />
             </div>
+            {errors.email?.type === 'required' && <p role="alert">Email name is required</p>}
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Password</span>
@@ -78,8 +80,9 @@ if(token){
                 {...register("password", { required: true })}
                 type="password"
                 placeholder="Password"
-                className="input input-bordered w-full lg:w-96 mb-6"
+                className="input input-bordered w-full lg:w-96 mb-2"
               />
+              {errors.password?.type === 'required' && <p role="alert">Password is required</p>}
             </div>
             {/* <div>
               <select
@@ -91,6 +94,7 @@ if(token){
                 <option value="buyer"> Buyer</option>
               </select>
             </div> */}
+            <p className="text-red-300 mb-3">{logInError}</p>
             <input
               className="btn btn-primary text-white mb-10 w-full bg-gradient-to-r from-primary to-secondary"
               type="submit"

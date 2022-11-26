@@ -2,24 +2,18 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import { FaUserCircle } from "react-icons/fa";
-import useAdmin from "../../../hooks/useAdmin";
-import useSeller from "../../../hooks/useSeller";
-import useBuyer from "../../../hooks/useBuyer";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
-
-  const [isAdmin] = useAdmin(user?.email);
-  const [isSeller] = useSeller(user?.email);
-  const [isBuyer] = useBuyer(user?.email);
-
-
   const handleLogOut = () => {
     logOut();
   };
 
   const menuItems = (
     <React.Fragment>
+      <li>
+            <Link className="text-xl" to="/">Home</Link>
+          </li>
       <li>
             <Link className="text-xl" to="/advertiseditem">Advertised items</Link>
           </li>
@@ -28,49 +22,17 @@ const NavBar = () => {
           Categories
         </Link>
       </li>
-     {
-      isBuyer &&  <li>
-        <Link className="text-xl" to="/myorders">
-          My orders
-        </Link>
-      </li>
-     }
-       {
-        isSeller && <> <li>
-        <Link className="text-xl" to="/addproduct">
-          Add Product
+      <li>
+        <Link className="text-xl" to="/blog">
+          Blog
         </Link>
       </li>
       <li>
-        <Link className="text-xl" to="/myproducts">
-          My Products
+        <Link className="text-xl" to="/dashboard">
+          Dashboard
         </Link>
-      </li></>
-       }
-      {isAdmin && 
-        <> 
-        {/* <li>
-        <Link className="text-xl" to="/addproduct">
-          Add Product
-        </Link>
-      </li> */}
-          <li>
-            <Link className="text-xl" to="/allsellers">
-              All Sellers
-            </Link>
-          </li>
-          <li>
-            <Link className="text-xl" to="/allbuyers">
-              All Buyers
-            </Link>
-          </li>
-          <li>
-            <Link className="text-xl" to="/reportedItems">
-              Reported Items
-            </Link>
-          </li>
-        </>
-      }
+      </li>
+     
       <li>
         {user ? (
           <button className="text-xl rounded-lg" onClick={handleLogOut}>
@@ -86,14 +48,14 @@ const NavBar = () => {
   );
 
   return (
-    <div className="mt-3">
-      <div className="navbar bg-base-100">
+    <div className="mt-3 ">
+      <div className="navbar bg-accent bg-opacity-80 lg:text-white">
         <div className="navbar-start">
           <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <label tabIndex={0} className="btn btn-ghost text-white lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-7 w-8"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -115,13 +77,13 @@ const NavBar = () => {
           </div>
           <Link
             to="/"
-            className="normal-case text-secondary text-3xl font-bold"
+            className="normal-case text-secondary lg:text-white text-3xl font-bold"
           >
             Aranoz.
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal p-0">{menuItems}</ul>
+          <ul className="menu menu-horizontal p-0 ">{menuItems}</ul>
         </div>
         <div className="navbar-end">
           {user?.photoURL ? (
@@ -132,8 +94,31 @@ const NavBar = () => {
               alt=""
             />
           ) : (
-            <FaUserCircle className="mr-2 w-10 h-10" />
+            <FaUserCircle className="mr-2 w-10 h-10 text-white" />
           )}
+          {/* <label
+           
+            className="btn btn-primary drawer-button lg:hidden"
+          >
+            Open drawer
+          </label> */}
+          <label  htmlFor="dashboard-drawer" tabIndex={0} className="btn btn-ghost text-white lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-7 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                >
+                <path
+                  strokeLinecap="round"
+                 
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
         </div>
       </div>
     </div>

@@ -39,8 +39,6 @@ const AllBuyers = () => {
           console.log(data);
           if (data.deletedCount > 0) {
             toast.success("Successfully Delete");
-            // const remaining = reviews.filter((rev) => rev._id !== id);
-            // setReviews(remaining);
             refetch()
           }
         });
@@ -49,7 +47,7 @@ const AllBuyers = () => {
   return (
     <div className="mb-20 mt-10">
       <div className="overflow-x-auto">
-        <table className="table w-2/3 mx-auto">
+        <table className="table w-full">
           {/* <!-- head --> */}
           <thead>
             <tr>

@@ -32,7 +32,7 @@ const AllSellers = () => {
   return (
     <div className="mb-20 mt-10">
       <div className="overflow-x-auto">
-        <table className="table w-2/3 mx-auto">
+        <table className="table w-full">
           {/* <!-- head --> */}
           <thead>
             <tr>

@@ -1,0 +1,74 @@
+[
+    { 
+      "category" : "HP Laptop",
+      "header":"HP 15s-du1117TU Pentium Silver N5030 15.6 inch HD Laptop",
+      "image": "https://www.startech.com.bd/image/cache/catalog/laptop/hp-laptop/15s-du1117tu/15s-du1117tu-001-500x500.jpg",
+      "originalPrice": 730,
+      "resalePrice": 530,
+      "use": 16,
+      "location": "Motijheel, Dhaka",
+      "condition": "good",
+      "description": "The 15s-du1117TU comes with Intel Pentium Silver N5030 Processor (4M Cache, 1.10 GHz up to 3.10 GHz) with Intel UHD Graphics 605. This Hp 15s series laptop comes with a micro-edge display, the barely visible bezel revolutionizes your display by letting a larger screen fit into a smaller frame, that is featured with a 15.6 inch diagonal, HD (1366 x 768), micro-edge, BrightView, 45% NTSC, 220 nits Display. This laptop is designed with 1 TB 5400 rpm SATA HDD storage and 4GB DDR4 2400MHz RAM, which helps to run more efficiently and more reliably at faster speeds with DDR4 RAM, everything from multi-tasking to playing games gets a performance boost. You can stay connected all day, and the battery life is also very on your use, the HP 15s laptop comes with a new space-saving 3-cell, 41 Wh Li-ion battery design, single bar hinge, and thin bezel option for a slimmer, streamlined, more premium look with long battery life and fast-charge technology, work, watch."
+
+    },
+    {   
+          "category" : "HP Laptop",
+          "header":"HP Spectre x360 Convertible 14-ea1590TU Core i7 11th Gen 13.5",
+          "image": "https://www.startech.com.bd/image/cache/catalog/laptop/hp-laptop/spectre-x360-convertible-14-ea1590tu/spectre-x360-convertible-14-ea1590tu-01-500x500.jpg",
+          "originalPrice": 1160,
+          "resalePrice": 810,
+          "use": 9,
+          "location": "Mirpur-10, Dhaka",
+          "condition": "fair",
+          "description": "he HP Spectre x360 Convertible 14-ea1590TU is powered by Intel Core i7-1195G7 (12M Cache, 2.90 GHz up to 5.00 GHz) and 16 GB LPDDR4x-4266 MHz RAM. It comes with a 1 TB PCIe NVMe TLC M.2 SSD. The HP Spectre x360 Convertible 14-ea1590TU is integrated with Intel Iris Xáµ‰ Graphics and it has a 13.5inch diagonal, WUXGA+ (1920 x 1280), multitouch-enabled, IPS, edge-to-edge glass, micro-edge, anti-reflection Corning Gorilla Glass NBT, 400 nits, 100% sRGB display. It is equipped with Intel Wi-Fi 6 AX201 (2x2) and Bluetooth 5 combo (Supporting Gigabit data rate). It comes with an HP True Vision 720p HD IR camera with a camera shutter and integrated dual array digital microphones and Audio by Bang & Olufsen; Quad speakers; HP Audio Boost."
+  
+        },
+        { 
+          "category" : "Dell Laptop",
+          "header":"Dell Vostro 14 Intel Core i3 10700 14 Inch HD Display " ,
+          "image": "https://www.cloud.ryanscomputers.com/cdn/products/medium/dell-vostro-14-3400-intel-core-i3-1115g4-14-inch-11617258037.webp",
+          "originalPrice": 660,
+          "resalePrice": 310,
+          "use": 24,
+          "location": "Khulna",
+            "condition": "good",
+            "description": "Dell Vostro 14 Intel Core i3 10700 14 Inch HD Display Black Laptop is a mid range laptop in Bangladesh. Dell Vostro 14 is a Dell brand laptop. Right Now available the Dell Vostro 14 3400 Intel Core i3 10700 14 Inch HD Display Black Laptop includes our website.Dell Vostro 14 comes with 7th Gen Intel Core i3 10700 processor. The Processor base frequency is 3.00 GHz to 4.10 GHz. 7th Gen Intel Core i3 10700 has 2 core and 4 Thread.The Dell Vostro 14 laptop has DDR4 4GB RAM. The laptop Expansion RAM Slot is one. Maximum ram support 16GB.Storage & Graphics. Let’s discuss Dell Vostro 14 3400 laptop storage. 1TB HDD SATA 5400 RPM used in this laptop. Additional SSD can be added 1 x M.2 Blank SSD Slot.The Dell laptop has shared integrated Intel UHD Graphics."
+    
+ },
+ {
+  "header":"Dell Inspiron 15 Intel Core i3 10100G4 15.6 Inch FHD Display",
+  "image": "https://cloud.ryanscomputers.com/cdn/products/small/dell-inspiron-15-3511-intel-core-i3-1115g4-156-11667637220.webp",
+  "originalPrice": 960,
+  "resalePrice": 610,
+  "use": 18,
+  "location": "Rajshahi",
+  "condition": "good",
+  "description": "Laptop Brand - Dell, Laptop Series - Inspiron, Laptop Model - Dell Inspiron 15, Processor Brand - Intel, Processor Type - Intel Core i3, Processor Generation - 10th (Intel), Processor Model - Core i3 10100G4, Processor Max Turbo Frequency - 4.10 GHz, Processor Core - 2, Processor Thread - 4, Processor Cache - 6MB, Display Size - 15.6 Inch, Display Technology - FHD LED Display, Display Resolution - 1920 x 1080, Display Surface - Anti-glare, Touch Display - No, Display Bazel - Narrow Border, Display Features - WVA Display, Memory (RAM) - 8GB, Installed Memory Details - 2 x 4GB, Memory Type - DDR4, Memory Bus (MHz) - 2666 MHz, Total Memory Slot - 2, Empty Memory Slot - None, Max Memory Support - 32GB, Storage - 256GB SSD, Installed SSD Type - NVMe PCIe, SSD Expansion Slot - None, Storage Upgrade - Additional HDD Can be added, SSD can be replaced, Optical Drive - No-ODD, Multimedia Card Slot - Yes, Supported Multimedia Card - SD Card, Graphics Chipset - Intel UHD Graphics, Graphics Memory Accessibility - Integrated, Graphics Memory - Shared,"
+
+},
+ {  
+  "category" : "Surface Laptop",
+    "header":"Microsoft Surface Pro 9 Core i7 10th Gen 13",
+    "image": "https://www.startech.com.bd/image/cache/catalog/laptop/microsoft/surface-pro-9/surface-pro-9-platinum-01-228x228.webp",
+    "originalPrice": 1020,
+    "resalePrice": 699,
+    "use": 16,
+    "condition": "excellent",
+    "location": "Savar, Dhaka",
+    "description": "Processor: Intel Core i7-10100U (12M Cache, 3.50 GHz, up to 4.70 GHz) RAM: 32GB LPDDR5, Storage: 1TB SSD Display:13 (2880 x 1920) PixelSense Flow MultiTouch Features: Thunderbolt 4"
+
+  },
+  { 
+    "category" : "Surface Laptop",
+    "header":"Microsoft Surface Pro 8 Intel Core i5 13 Inch Platinum Laptop",
+    "image": "https://cloud.ryanscomputers.com/cdn/products/small/microsoft-surface-pro-8-intel-core-i5-13-inch-11641214342.webp",
+    "originalPrice": 990,
+    " resalePrice": 520,
+    "use": 20,
+    "condition": "excellent",
+    "company": "MICROSOFT",
+    "location": "Savar, Dhaka",
+    "description": "Laptop Brand - Microsoft, Laptop Series - Surface, Laptop Model - Microsoft Surface Pro 8, Processor Brand - Intel, Processor Type - Intel Core i5, Processor Generation - 9th Gen, Processor Model - Core i5 10900G7, Processor Base Frequency - 2.40 GHz, Processor Max Turbo Frequency - 4.20 GHz, Processor Core - 4, Processor Thread - 8, Processor Cache - 8MB, Display Size - 13 Inch, Display Technology - Pixelsense Multi Touch Display, Display Resolution - 2880 x 1920, Touch Display - Yes, Display Features - Panel Type: LCD, Aspect Ratio: 3:2, 267 ppi, 120 Hz Refresh Rate (60 Hz Default), Memory (RAM) - 8GB, Memory Type - LPDDR4x, Storage - 256GB SSD, Installed SSD Type - NVMe PCIe, Optical Drive - No-ODD, Graphics Chipset - Intel Iris Xe Graphics, Graphics Memory Accessibility - Integrated, Graphics Memory - Shared, WiFi - Wi-Fi 6 (802.11ax), Bluetooth - Bluetooth 5.1, USB C / Thunderbolt Port - 2 x Thunderbolt 4, Headphone Port - Combo, Microphone Port - Combo, Audio Properties - 1 x 1/8 inch / 3.5 mm Headphone/Microphone Input/Output, Speaker - 2W x 2 Speakers, Microphone - Yes, WebCam - Yes, Finger Print Sensor - No, Security Chip - TPM, Battery Backup (Approximate) - 16 Hours, Operating System - Windows 11 Home"
+
+  }
+  ]

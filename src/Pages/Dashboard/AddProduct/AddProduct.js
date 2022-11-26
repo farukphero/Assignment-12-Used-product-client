@@ -14,13 +14,12 @@ const AddProduct = () => {
   const date = format(postDate, "Pp");
 
   const handleAddProducts = (data, event) => {
-    console.log(data)
     const newAddedProducts = {
       data,
       email: user.email,
-      date: event.target.date.value
+      date: event.target.date.value,
+      sellerName: event.target.sellerName.value
     };
-    console.log(newAddedProducts)
    
     fetch("http://localhost:5000/newproducts", {
       method: "POST",
@@ -33,7 +32,7 @@ const AddProduct = () => {
       .then((res) => res.json())
       .then((data) => {
         navigate("/myproducts");
-    toast.success("Product Added");
+        toast.success("Product Added");
         console.log(data);
       })
       .catch((error) => console.log(error));
@@ -49,12 +48,38 @@ const AddProduct = () => {
           <div className="form-control mt-5">
             <input
               type="text"
+              name='sellerName'
+              disabled
+              value={user.displayName}
+              className="input input-bordered mb-5"
+            />
+           
+          </div>
+          <div className="form-control mt-5">
+            <input
+              type="text"
               name='date'
               disabled
               value={date}
               className="input input-bordered mb-5"
             />
            
+          </div>
+          <div>
+            <label className="label">
+              <span className="label-text">Select Product Category</span>
+            </label>
+            <select
+              {...register("category", { required: true })}
+              className="select select-bordered w-full"
+            >
+              <option disabled selected>
+              Product Category
+              </option>
+              <option>Surface</option>
+              <option> Dell</option>
+              <option> HP</option>
+            </select>
           </div>
           <div className="form-control w-full">
             <label className="label">

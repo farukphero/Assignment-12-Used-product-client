@@ -18,13 +18,32 @@ const BookingModal = ({bookingInfo, setBookingInfo, postDate}) => {
     const phone = form.phone.value;
     const location = form.location.value;
     const email = form.email.value;
+    const header = bookingInfo.header;
+    const image = bookingInfo.image;
     const booking = {
          name,
          price,
          phone,
          location,
-         email
+         email, 
+         date,
+         header,
+         image
     };
+    fetch('http://localhost:5000/bookings', {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        // const newReview=[reviews,...userReviews]
+        // setUserReviews(newReview)
+      })
+      .catch((error) =>  error.message(error));
      toast.success('Booked Successfully')
     // console.log(booking,price, name, phone, email,location)
     setBookingInfo(null)
@@ -101,6 +120,7 @@ const BookingModal = ({bookingInfo, setBookingInfo, postDate}) => {
                   type="text"
                   name="phone"
                   placeholder="Phone Number"
+                  required
                   className="input input-bordered"
                 />
               </div>
@@ -109,6 +129,7 @@ const BookingModal = ({bookingInfo, setBookingInfo, postDate}) => {
                   type="text"
                   name="location"
                   placeholder="Location"
+                  required
                   className="input input-bordered"
                 />
               </div>

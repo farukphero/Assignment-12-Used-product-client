@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
-  const [error, setError] = useState("");
+  const [signUpError, setSignUpError] = useState("");
   const { register, handleSubmit } = useForm();
   const { createUserByEmail, providerGoogleLogIn, updateUser } = useContext(AuthContext);
   const provider = new GoogleAuthProvider();
@@ -23,7 +23,7 @@ const SignUp = () => {
   }
 
   const handleSignUp = (data) => {
-    setError("");
+    setSignUpError("");
     createUserByEmail(data.email, data.password)
       .then((result) => {
         const user = result.user;
@@ -37,11 +37,13 @@ const SignUp = () => {
             saveUser(data.name, data.email, data.category);
           })
           .catch((error) => {
-            setError(error.message);
             console.log(error);
           });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setSignUpError(error.message)
+        // console.log(error)
+      });
   };
 
   const handleGoogleSignUp = () => {
@@ -50,7 +52,7 @@ const SignUp = () => {
         const user = result.user;
         const category = 'buyer'
         saveUser(user?.displayName, user?.email,category);
-        // navigate(from, { replace: true });
+        navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));
   };
@@ -79,7 +81,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="lg:flex justify-center">
+    <div className="lg:flex justify-center mb-24 mt-12">
       <div>
         <img
           className="w-full lg:h-[600px] md:flex hidden"
@@ -134,12 +136,13 @@ const SignUp = () => {
                 <option value="buyer"> Buyer</option>
               </select>
             </div>
+            <p className="text-red-300 mb-3">{signUpError}</p>
             <input
               className="text-white btn btn-primary mb-10 w-full bg-gradient-to-r from-primary to-secondary"
               type="submit"
               value="Sign Up"
             />
-            <p>{error}</p>
+           
             <p>
               Already have an account?
               <Link className="underline text-secondary" to="/login">
