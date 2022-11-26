@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
 const AddProduct = () => {
+  
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
@@ -13,15 +14,29 @@ const AddProduct = () => {
 
   const date = format(postDate, "Pp");
 
-  const handleAddProducts = (data, event) => {
-    const newAddedProducts = {
-      data,
-      email: user.email,
-      date: event.target.date.value,
-      sellerName: event.target.sellerName.value
-    };
-   
-    fetch("http://localhost:5000/newproducts", {
+  const handleAddProducts = (event) => {
+    event.preventDefault()
+    const form = event.target;
+    const email = user.email;
+    const date = form.date.value;
+    const sellerName= form.sellerName.value;
+    const category = form.category.value;
+    const name = form.name.value;
+    const image = form.image.value;
+    const originalprice= form.originalprice.value;
+    const resaleprice = form.resaleprice.value;
+    const purchase =form.purchase.value;
+    const phone = form.phone.value;
+    const location =form.location.value;
+    const condition = form.condition.value;
+    const description = form.description.value;
+
+
+    const newAddedProducts ={email, date, sellerName, category, name, image, originalprice, resaleprice, purchase, phone, location, condition, description}
+
+ 
+ 
+    fetch("http://localhost:5000/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -31,7 +46,7 @@ const AddProduct = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        navigate("/myproducts");
+        navigate("/dashboard/myproducts");
         toast.success("Product Added");
         console.log(data);
       })
@@ -44,7 +59,7 @@ const AddProduct = () => {
         <h1 className="text-4xl mt-12 mb-6 text-secondary">
           Add Your Products
         </h1>
-        <form onSubmit={handleSubmit(handleAddProducts)}>
+        <form onSubmit={handleAddProducts}>
           <div className="form-control mt-5">
             <input
               type="text"
@@ -69,8 +84,8 @@ const AddProduct = () => {
             <label className="label">
               <span className="label-text">Select Product Category</span>
             </label>
-            <select
-              {...register("category", { required: true })}
+            <select name='category'
+              // {...register("category", { required: true })}
               className="select select-bordered w-full"
             >
               <option disabled selected>
@@ -86,8 +101,9 @@ const AddProduct = () => {
               <span className="label-text">Product Name</span>
             </label>
             <input
-              {...register("name", { required: true })}
+              // {...register("name", { required: true })}
               type="text"
+              name= 'name'
               placeholder="Enter Your Product Name"
               className="input input-bordered w-full lg:w-96"
             />
@@ -97,8 +113,9 @@ const AddProduct = () => {
               <span className="label-text">Product Image</span>
             </label>
             <input
-              {...register("image", { required: true })}
+              // {...register("image", { required: true })}
               type="text"
+              name='image'
               placeholder="Enter Your Product Image URL"
               className="input input-bordered w-full lg:w-96"
             />
@@ -108,8 +125,9 @@ const AddProduct = () => {
               <span className="label-text">Original Price</span>
             </label>
             <input
-              {...register("originalprice", { required: true })}
+              // {...register("originalprice", { required: true })}
               type="text"
+              name='originalprice'
               placeholder="Original Price"
               className="input input-bordered w-full lg:w-96"
             />
@@ -120,8 +138,9 @@ const AddProduct = () => {
               <span className="label-text">Resale Price </span>
             </label>
             <input
-              {...register("resaleprice", { required: true })}
+              // {...register("resaleprice", { required: true })}
               type="text"
+              name= 'resaleprice'
               placeholder="Resale Price"
               className="input input-bordered w-full lg:w-96"
             />
@@ -131,8 +150,9 @@ const AddProduct = () => {
               <span className="label-text">Year of purchase </span>
             </label>
             <input
-              {...register("purchase", { required: true })}
+              // {...register("purchase", { required: true })}
               type="text"
+              name='purchase'
               placeholder="Year of purchase"
               className="input input-bordered w-full lg:w-96"
             />
@@ -142,8 +162,9 @@ const AddProduct = () => {
               <span className="label-text">Phone</span>
             </label>
             <input
-              {...register("phone", { required: true })}
+              // {...register("phone", { required: true })}
               type="text"
+              name='phone'
               placeholder="Phone Number"
               className="input input-bordered w-full lg:w-96"
             />
@@ -153,8 +174,9 @@ const AddProduct = () => {
               <span className="label-text">Location </span>
             </label>
             <input
-              {...register("location", { required: true })}
+              // {...register("location", { required: true })}
               type="text"
+              name ='location'
               placeholder="Location"
               className="input input-bordered w-full lg:w-96"
             />
@@ -163,8 +185,8 @@ const AddProduct = () => {
             <label className="label">
               <span className="label-text">Select Product Condition</span>
             </label>
-            <select
-              {...register("condition", { required: true })}
+            <select name='condition'
+              // {...register("condition", { required: true })}
               className="select select-bordered w-full"
             >
               <option disabled selected>
@@ -180,7 +202,8 @@ const AddProduct = () => {
               <span className="label-text">Product Description</span>
             </label>
             <textarea
-              {...register("description", { required: true })}
+              // {...register("description", { required: true })}
+              name='description'
               className="textarea textarea-bordered w-full"
               placeholder="Description"
             ></textarea>
@@ -194,11 +217,12 @@ const AddProduct = () => {
       </div>
       <div className="">
         <img
-          className="w-[800px] lg:h-[800px] md:flex hidden scroll-m-0"
+          className="w-[800px] lg:h-[800px] md:flex hidden"
           src="https://wisdmlabs.com/site/wp-content/uploads/2019/09/Cart-discount.png"
           alt=""
         />
       </div>
+      
     </div>
   );
 };

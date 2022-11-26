@@ -1,6 +1,6 @@
 [
     { 
-      "category" : "HP Laptop",
+      "category" : "HP",
       "header":"HP 15s-du1117TU Pentium Silver N5030 15.6 inch HD Laptop",
       "image": "https://www.startech.com.bd/image/cache/catalog/laptop/hp-laptop/15s-du1117tu/15s-du1117tu-001-500x500.jpg",
       "originalPrice": 730,
@@ -12,7 +12,7 @@
 
     },
     {   
-          "category" : "HP Laptop",
+          "category" : "HP",
           "header":"HP Spectre x360 Convertible 14-ea1590TU Core i7 11th Gen 13.5",
           "image": "https://www.startech.com.bd/image/cache/catalog/laptop/hp-laptop/spectre-x360-convertible-14-ea1590tu/spectre-x360-convertible-14-ea1590tu-01-500x500.jpg",
           "originalPrice": 1160,
@@ -24,7 +24,7 @@
   
         },
         { 
-          "category" : "Dell Laptop",
+          "category" : "Dell",
           "header":"Dell Vostro 14 Intel Core i3 10700 14 Inch HD Display " ,
           "image": "https://www.cloud.ryanscomputers.com/cdn/products/medium/dell-vostro-14-3400-intel-core-i3-1115g4-14-inch-11617258037.webp",
           "originalPrice": 660,
@@ -36,6 +36,7 @@
     
  },
  {
+  "category" : "Dell",
   "header":"Dell Inspiron 15 Intel Core i3 10100G4 15.6 Inch FHD Display",
   "image": "https://cloud.ryanscomputers.com/cdn/products/small/dell-inspiron-15-3511-intel-core-i3-1115g4-156-11667637220.webp",
   "originalPrice": 960,
@@ -47,7 +48,7 @@
 
 },
  {  
-  "category" : "Surface Laptop",
+  "category" : "Surface",
     "header":"Microsoft Surface Pro 9 Core i7 10th Gen 13",
     "image": "https://www.startech.com.bd/image/cache/catalog/laptop/microsoft/surface-pro-9/surface-pro-9-platinum-01-228x228.webp",
     "originalPrice": 1020,
@@ -59,7 +60,7 @@
 
   },
   { 
-    "category" : "Surface Laptop",
+    "category" : "Surface",
     "header":"Microsoft Surface Pro 8 Intel Core i5 13 Inch Platinum Laptop",
     "image": "https://cloud.ryanscomputers.com/cdn/products/small/microsoft-surface-pro-8-intel-core-i5-13-inch-11641214342.webp",
     "originalPrice": 990,

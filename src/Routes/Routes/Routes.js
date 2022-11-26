@@ -18,7 +18,6 @@ import SignUp from "../../Pages/SignUp/SignUp";
 import AdminRoute from "../AdmitRoute/AdminRoute";
 import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
-import SellerRoute from "../SellerRoute/SellerRoute";
 
 export const router = createBrowserRouter([
   {
@@ -35,14 +34,14 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/products/:id",
+        path: "/products/:category",
         element: (
           <PrivateRoute>
             <Products></Products>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+        loader: ({ params }) =>fetch(`http://localhost:5000/products/${params.category}`)
+,
       },
 
       {

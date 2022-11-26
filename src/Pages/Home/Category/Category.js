@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Category = ({ category }) => {
-  const {_id, category:title, picture, about } = category;
+  const {category: title, picture, about } = category;
 
   return (
     <div>
@@ -13,7 +13,7 @@ const Category = ({ category }) => {
         <div className="card-body items-center text-center">
           <h2 className="card-title">{title}</h2>
           <p>{about}</p>
-          <button className="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary "><Link to={`/products/${_id}`}>See All Products</Link></button>
+          <button className="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary "><Link to={`/products/${title}`}>See All Products</Link></button>
         </div>
       </div>
     </div>
