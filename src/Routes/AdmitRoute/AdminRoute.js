@@ -11,14 +11,14 @@ const AdminRoute = ({ children }) => {
   if (loading || isAdminLoading) {
     return (
       <div>
-        <div class="text-center">
+        <div className="text-center">
           <div role="status">
             <div
-              class="spinner-border animate-spin inline-block w-14 h-14 border-4 rounded-full"
+              className="spinner-border animate-spin inline-block w-14 h-14 border-4 rounded-full"
               role="status"
             >
             </div>
-            <span class="sr-only">Loading...</span>
+            <span className="sr-only">Loading...</span>
           </div>
         </div>
       </div>

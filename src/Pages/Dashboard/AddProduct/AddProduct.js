@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import { format } from "date-fns";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -8,28 +9,31 @@ const AddProduct = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  const [postDate, setPostDate] = useState(new Date());
 
-  const handleAddProducts = (data) => {
+  const date = format(postDate, "Pp");
+
+  const handleAddProducts = (data, event) => {
+    console.log(data)
     const newAddedProducts = {
-       data,
+      data,
       email: user.email,
+      date: event.target.date.value
     };
-    // console.log(newAddedProducts)
-    // console.log(data)
-
-    navigate("/myproducts");
-    toast.success("Product Added");
+    console.log(newAddedProducts)
+   
     fetch("http://localhost:5000/newproducts", {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem('accessToken')}`
       },
       body: JSON.stringify(newAddedProducts),
     })
       .then((res) => res.json())
       .then((data) => {
-        // const newAddService=[...addServices, data]
-        // setAddServices(newAddService)
+        navigate("/myproducts");
+    toast.success("Product Added");
         console.log(data);
       })
       .catch((error) => console.log(error));
@@ -42,7 +46,16 @@ const AddProduct = () => {
           Add Your Products
         </h1>
         <form onSubmit={handleSubmit(handleAddProducts)}>
-          {/* <Header /> */}
+          <div className="form-control mt-5">
+            <input
+              type="text"
+              name='date'
+              disabled
+              value={date}
+              className="input input-bordered mb-5"
+            />
+           
+          </div>
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text">Product Name</span>

@@ -1,10 +1,13 @@
+import { format } from "date-fns";
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
-const BookingModal = ({bookingInfo, setBookingInfo}) => {
+const BookingModal = ({bookingInfo, setBookingInfo, postDate}) => {
     const {user} = useContext(AuthContext)
-    console.log(user)
+    // console.log(user)
+
+    const date = format(postDate, 'Pp')
 
 
   const handleBooking = (event) => {
@@ -47,6 +50,15 @@ const BookingModal = ({bookingInfo, setBookingInfo}) => {
               value={ bookingInfo.header}
               disabled
             //   value={date}
+              className="input input-bordered"
+            />
+           
+          </div>
+          <div className="form-control mt-5">
+            <input
+              type="text"
+              disabled
+              value={date}
               className="input input-bordered"
             />
            

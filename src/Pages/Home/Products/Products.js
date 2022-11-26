@@ -7,12 +7,15 @@ const Products = () => {
     const products = useLoaderData()
     const newProducts = products.products
     const [bookingInfo, setBookingInfo] = useState(null)
+    const [postDate, setPostDate] = useState(new Date());
     return (
         <div className='grid grid-cols-1 gap-10'>
             {
                 newProducts.map(product=><Product
                 key={product._id}
                 product={product}
+                postDate={postDate}
+                setPostDate={setPostDate}
                 setBookingInfo={setBookingInfo}
                 >
                 </Product>)
@@ -21,6 +24,7 @@ const Products = () => {
             bookingInfo &&  <BookingModal
             bookingInfo={bookingInfo}
             setBookingInfo={setBookingInfo}
+            postDate={postDate}
            ></BookingModal>
            }
         </div>

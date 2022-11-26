@@ -48,7 +48,12 @@ const NavBar = () => {
       </li></>
        }
       {isAdmin && 
-        <>
+        <> 
+        {/* <li>
+        <Link className="text-xl" to="/addproduct">
+          Add Product
+        </Link>
+      </li> */}
           <li>
             <Link className="text-xl" to="/allsellers">
               All Sellers
