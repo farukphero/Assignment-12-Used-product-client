@@ -5,6 +5,7 @@ import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
+import Payment from "../../Pages/Dashboard/Dashboard/Payment/Payment";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import ReportedItems from "../../Pages/Dashboard/ReportedItems/ReportedItems";
@@ -13,16 +14,16 @@ import Categories from "../../Pages/Home/Categories/Categories";
 import Home from "../../Pages/Home/Home/Home";
 import Products from "../../Pages/Home/Products/Products";
 import LogIn from "../../Pages/LogIn/LogIn";
-import ErrorPage from "../../Pages/Shared/ErrorPage/ErrorPage";
+import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
 import SignUp from "../../Pages/SignUp/SignUp";
 import AdminRoute from "../AdmitRoute/AdminRoute";
-import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<DisplayError></DisplayError>,
     children: [
       {
         path: "/",
@@ -65,17 +66,21 @@ export const router = createBrowserRouter([
         <DashboardLayout></DashboardLayout>
       </PrivateRoute>
     ),
+    errorElement:<DisplayError></DisplayError>,
     children: [
       {
         path: "/dashboard",
         element: <Dashboard></Dashboard>,
       },
       {
+        path: "/dashboard/payment/:id",
+        element: <Payment></Payment>,
+        loader: ({params})=> fetch(`http://localhost:5000/bookings/${params.id}`)
+      },
+      {
         path: "/dashboard/myorders",
         element: (
-          <BuyerRoute>
             <MyOrders></MyOrders>
-          </BuyerRoute>
         ),
       },
       {
@@ -119,9 +124,5 @@ export const router = createBrowserRouter([
         ),
       },
     ],
-  },
-  {
-    path: "*",
-    element: <ErrorPage></ErrorPage>,
   },
 ]);

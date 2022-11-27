@@ -40,13 +40,17 @@ const BookingModal = ({bookingInfo, setBookingInfo, postDate}) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data)
-        // const newReview=[reviews,...userReviews]
-        // setUserReviews(newReview)
+
+        if(data.acknowledged){
+          toast.success('Booked Successfully')
+          setBookingInfo(null)
+        }
+        else{
+          toast.error(data.message)
+          setBookingInfo(null)
+        }
       })
-      .catch((error) =>  error.message(error));
-     toast.success('Booked Successfully')
-    // console.log(booking,price, name, phone, email,location)
-    setBookingInfo(null)
+    
   };
 
   return (

@@ -1,4 +1,3 @@
-import { format } from "date-fns";
 import React from "react";
 import { DayPicker } from "react-day-picker";
 
@@ -14,6 +13,7 @@ const Product = ({ product, setBookingInfo, postDate, setPostDate }) => {
     location,
     description,
     sellerName,
+    date
   } = product;
   return (
     <div>
@@ -60,7 +60,7 @@ const Product = ({ product, setBookingInfo, postDate, setPostDate }) => {
           <p>
             
             <span className="font-bold text-secondary">Posted date </span>:
-            {format(postDate, "Pp")}
+            {date}
           </p>
           <div className="card-actions justify-start lg:justify-end">
             <label

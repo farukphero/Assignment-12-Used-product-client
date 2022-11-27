@@ -21,7 +21,7 @@ const AddProduct = () => {
     const date = form.date.value;
     const sellerName= form.sellerName.value;
     const category = form.category.value;
-    const name = form.name.value;
+    const header = form.name.value;
     const image = form.image.value;
     const originalprice= form.originalprice.value;
     const resaleprice = form.resaleprice.value;
@@ -32,7 +32,7 @@ const AddProduct = () => {
     const description = form.description.value;
 
 
-    const newAddedProducts ={email, date, sellerName, category, name, image, originalprice, resaleprice, purchase, phone, location, condition, description}
+    const newAddedProducts ={email, date, sellerName, category, header, image, originalprice, resaleprice, purchase, phone, location, condition, description}
 
  
  

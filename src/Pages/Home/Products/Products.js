@@ -5,7 +5,6 @@ import Product from './Product';
 
 const Products = () => {
     const products = useLoaderData()
-    console.log(products)
     const [bookingInfo, setBookingInfo] = useState(null)
     const [postDate, setPostDate] = useState(new Date());
     return (

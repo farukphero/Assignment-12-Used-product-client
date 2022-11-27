@@ -50,7 +50,7 @@ const MyProducts = () => {
             <img className="w-full h-96 " src={product.image} alt="Album" />
           </figure>
           <div className="card-body md:w-1/2">
-            <h2 className="card-title">{product.name}</h2>
+            <h2 className="card-title">{product.header}</h2>
             <p> {product.description}</p>
             <p>
             <span className="font-bold">OriginalPrice</span>: $ {product.originalprice}

@@ -1,13 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Button from "../../../Components/Button/Button";
+import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
-const Order = ({ order }) => {
-  const { _id,date, header, image, location, phone, price } = order;
+const Payment = () => {
+    const data = useLoaderData()
+    const { _id,date, header, image, location, phone, price } = data;
 
-  return (
-    <div>
-      <div className="card  bg-base-100 shadow-xl">
+    console.log(data)
+    return (
+        <div>
+            <h1>Payment</h1>
+            <div className="card  bg-base-100 shadow-xl">
         <figure>
           <img className="w-96 h-96" src={image} alt="Album" />
         </figure>
@@ -18,19 +20,12 @@ const Order = ({ order }) => {
           <p> <span className="font-bold text-secondary">Meeting Location</span> : {location} </p>
           <p> <span className="font-bold text-secondary">Booking date</span> : {date} </p>
           <div className="card-actions justify-end">
-           {
-            order.price && !order.paid && <Link to={`/dashboard/payment/${_id}`}>
-              <Button>Pay Now</Button>
-            </Link>
-           }
-           {
-            order.price && order.paid &&  <span>Paid</span>
-           }
+           
           </div>
         </div>
       </div>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default Order;
+export default Payment;

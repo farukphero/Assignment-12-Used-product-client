@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { useQuery } from "react-query";
+import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
 const AllBuyers = () => {
+  const {removeUser} = useContext(AuthContext)
   const { data: buyers = [], refetch } = useQuery({
     queryKey: ["buyers"],
     queryFn: async () => {
@@ -38,6 +40,9 @@ const AllBuyers = () => {
         .then((data) => {
           console.log(data);
           if (data.deletedCount > 0) {
+            // removeUser()
+            // .then(()=>{})
+            // .catch(error=>console.log(error))
             toast.success("Successfully Delete");
             refetch()
           }

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import { FaUserCircle } from "react-icons/fa";
+import image from '../../../../src/images/favicon.ico'
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -18,7 +19,7 @@ const NavBar = () => {
             <Link className="text-xl" to="/advertiseditem">Advertised items</Link>
           </li>
       <li>
-        <Link className="text-xl" to="/categories">
+        <Link  className="text-xl" to="/categories">
           Categories
         </Link>
       </li>
@@ -75,12 +76,15 @@ const NavBar = () => {
               {menuItems}
             </ul>
           </div>
+          <div className="flex">
+            <img className="rounded-lg h-8 w-8 mr-2" src={image} alt="" />
           <Link
             to="/"
             className="normal-case text-secondary lg:text-white text-3xl font-bold"
           >
             Aranoz.
           </Link>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0 ">{menuItems}</ul>
@@ -96,12 +100,6 @@ const NavBar = () => {
           ) : (
             <FaUserCircle className="mr-2 w-10 h-10 text-white" />
           )}
-          {/* <label
-           
-            className="btn btn-primary drawer-button lg:hidden"
-          >
-            Open drawer
-          </label> */}
           <label  htmlFor="dashboard-drawer" tabIndex={0} className="btn btn-ghost text-white lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

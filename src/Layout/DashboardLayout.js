@@ -48,7 +48,11 @@ const DashboardLayout = () => {
               </>
             )}
             {isAdmin && (
-              <>
+              <> <li>
+              <Link className="text-xl" to="/dashboard/myorders">
+                My orders
+              </Link>
+            </li>
                 <li>
                   <Link className="text-xl" to="/dashboard/addproduct">
                     Add Product
