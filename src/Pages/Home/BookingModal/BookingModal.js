@@ -51,6 +51,7 @@ const BookingModal = ({bookingInfo, setBookingInfo, postDate}) => {
         }
       })
     
+    
   };
 
   return (

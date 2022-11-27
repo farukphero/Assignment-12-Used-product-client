@@ -24,7 +24,7 @@ const Order = ({ order }) => {
             </Link>
            }
            {
-            order.price && order.paid &&  <span>Paid</span>
+            order.price && order.paid &&  <span className="btn btn-accent">Paid</span>
            }
           </div>
         </div>
