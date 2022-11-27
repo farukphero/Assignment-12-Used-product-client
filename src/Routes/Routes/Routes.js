@@ -17,6 +17,7 @@ import LogIn from "../../Pages/LogIn/LogIn";
 import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
 import SignUp from "../../Pages/SignUp/SignUp";
 import AdminRoute from "../AdmitRoute/AdminRoute";
+import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -79,9 +80,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/myorders",
-        element: (
-            <MyOrders></MyOrders>
-        ),
+        element: <BuyerRoute> <MyOrders></MyOrders></BuyerRoute>,
       },
       {
         path: "/dashboard/addproduct",
@@ -118,9 +117,9 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/reportedItems",
         element: (
-          <AdminRoute>
+          // <AdminRoute>
             <ReportedItems></ReportedItems>
-          </AdminRoute>
+          // </AdminRoute>
         ),
       },
     ],

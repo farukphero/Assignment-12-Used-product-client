@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import toast from "react-hot-toast";
 import { useQuery } from "react-query";
-import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
+// import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
 const AllBuyers = () => {
-  const {removeUser} = useContext(AuthContext)
+  // const {removeUser} = useContext(AuthContext)
   const { data: buyers = [], refetch } = useQuery({
     queryKey: ["buyers"],
     queryFn: async () => {
