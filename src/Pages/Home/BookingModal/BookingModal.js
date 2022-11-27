@@ -5,7 +5,6 @@ import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
 const BookingModal = ({bookingInfo, setBookingInfo, postDate}) => {
     const {user} = useContext(AuthContext)
-    // console.log(user)
 
     const date = format(postDate, 'Pp')
 
@@ -20,6 +19,7 @@ const BookingModal = ({bookingInfo, setBookingInfo, postDate}) => {
     const email = form.email.value;
     const header = bookingInfo.header;
     const image = bookingInfo.image;
+    const productId = bookingInfo._id
     const booking = {
          name,
          price,
@@ -28,7 +28,8 @@ const BookingModal = ({bookingInfo, setBookingInfo, postDate}) => {
          email, 
          date,
          header,
-         image
+         image,
+         productId
     };
     fetch('http://localhost:5000/bookings', {
       method: "POST",
@@ -114,8 +115,8 @@ const BookingModal = ({bookingInfo, setBookingInfo, postDate}) => {
                 <input
                   type="text"
                   name="price"
-                  placeholder="Phone Number"
-                  value={bookingInfo.resalePrice}
+                  placeholder="Price"
+                  value={bookingInfo.resaleprice}
                   disabled
                   className="input input-bordered"
                 />

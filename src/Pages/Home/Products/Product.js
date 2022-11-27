@@ -6,8 +6,8 @@ const Product = ({ product, setBookingInfo, postDate, setPostDate }) => {
   const {
     header,
     image,
-    originalPrice,
-    resalePrice,
+    originalprice,
+    resaleprice,
     use,
     condition,
     location,
@@ -33,11 +33,11 @@ const Product = ({ product, setBookingInfo, postDate, setPostDate }) => {
           <p> {description}</p>
           <p>
             <span className="font-bold text-secondary">OriginalPrice</span>: $
-            {originalPrice}
+            {originalprice}
           </p>
           <p>
             <span className="font-bold text-secondary">ResalePrice</span>: $
-            {resalePrice}
+            {resaleprice}
           </p>
           <p>
             <span className="font-bold text-secondary">Use</span> : {use} month

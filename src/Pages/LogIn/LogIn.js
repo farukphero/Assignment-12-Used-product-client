@@ -5,6 +5,7 @@ import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider } from "firebase/auth";
 import useToken from "../../hooks/useToken";
+import Loading from "../Shared/Loading/Loading";
 
 
 const LogIn = () => {
@@ -22,6 +23,9 @@ const LogIn = () => {
 if(token){
   navigate(from, { replace: true });
 }
+else{
+  <Loading></Loading>
+}
 
 
   const handleLogin = (data) => {
@@ -29,8 +33,7 @@ if(token){
     accountLogIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        setLogInUserEmail(data.email)
-        // navigate("/");
+        setLogInUserEmail(data.email);
       })
       .catch((error) => setLoginError(error.message));
   };
@@ -38,7 +41,8 @@ if(token){
     providerGoogleLogIn(provider)
     .then((result) => {
         const user = result.user;
-        setLogInUserEmail(user.email)
+        setLogInUserEmail(user.email);
+
        
 
       })

@@ -8,7 +8,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 
 const Payment = () => {
   const booking = useLoaderData();
-  const { header, image, price } = booking;
+  const {header, image, price } = booking;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2">

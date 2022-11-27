@@ -6,6 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider } from "firebase/auth";
 import toast from "react-hot-toast";
 import useToken from "../../hooks/useToken";
+import Loading from "../Shared/Loading/Loading";
 
 const SignUp = () => {
   const [signUpError, setSignUpError] = useState("");
@@ -20,6 +21,9 @@ const SignUp = () => {
 
   if(token){
     navigate(from, { replace: true });
+  }
+  else{
+    <Loading></Loading>
   }
 
   const handleSignUp = (data) => {
@@ -42,7 +46,6 @@ const SignUp = () => {
       })
       .catch((error) => {
         setSignUpError(error.message)
-        // console.log(error)
       });
   };
 
@@ -52,7 +55,7 @@ const SignUp = () => {
         const user = result.user;
         const category = 'buyer'
         saveUser(user?.displayName, user?.email,category);
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));
   };

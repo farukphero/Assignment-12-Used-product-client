@@ -21,9 +21,11 @@ const MyProducts = () => {
         logOut();
       }
       const data = await res.json();
+      console.log(data)
       return data;
     },
   });
+  
 
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");
@@ -41,7 +43,22 @@ const MyProducts = () => {
         });
     }
   };
-  
+  const handleAdvertise=()=>{
+    fetch(`http://localhost:5000/advertise`, {
+      method: "POST",
+      headers:{
+        'content-type': 'application/json'
+      },
+      body:JSON.stringify(products)
+    
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        })
+
+  }
+  // console.log(product.image)
   return (
     <div className="my-10">
       {products.map((product) => (
@@ -59,7 +76,7 @@ const MyProducts = () => {
             <span className="font-bold">ResalePrice</span>: $ {product.resaleprice}
           </p>
           <p>
-            <span className="font-bold">Use</span> : {product.use} month
+            <span className="font-bold">Purchasing Year</span> : {product.purchase} 
           </p>
           <p>
             <span className="font-bold">Product Condition</span>: {product.condition}
@@ -71,7 +88,14 @@ const MyProducts = () => {
             <span className="font-bold">Post date </span>: {product?.date}
           </p>
             <div className="card-actions justify-between md:justify-end">
-              <Button>Availabe</Button>
+            <button className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white" onClick={handleAdvertise}>Advertise</button>
+              {
+                 product.resaleprice && !product.paid &&  <Button>Availabe</Button>
+              }
+              {
+                 product.resaleprice && product.paid &&  <Button>Sold</Button>
+              }
+             
               <button className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white" onClick={()=>handleDelete(product._id)}>Delete</button>
             </div>
           </div>

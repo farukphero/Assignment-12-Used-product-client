@@ -13,7 +13,7 @@ const CheckoutForm = ({booking}) => {
     const elements = useElements();
     const navigate = useNavigate()
 
-    const {_id ,price, email, name} = booking
+    const {_id ,price, email, name,productId} = booking
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
@@ -78,6 +78,7 @@ const CheckoutForm = ({booking}) => {
         email,
         bookingId: _id,
         transactionId:paymentIntent.id,
+        identifier: productId,
 
 
 
