@@ -16,7 +16,7 @@ const AdvertiseItem = ({advertise}) => {
       } = advertise;
     return (
         <div>
-      (
+      
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure>
           <img className="w-full h-96 " src={image} alt="Album" />
@@ -42,14 +42,10 @@ const AdvertiseItem = ({advertise}) => {
           <p>
             <span className="font-bold">Post date </span>: {date}
           </p>
-          <div className="card-actions justify-between md:justify-end">
-
-            {!advertise.paid && <Button>Book Now</Button>}
-            {advertise.paid && <button className="btn">sold</button>}
-          </div>
+           
         </div>
       </div>
-      )
+     
     </div>
     );
 };

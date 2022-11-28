@@ -7,6 +7,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 import useToken from "../../hooks/useToken";
 import Loading from "../Shared/Loading/Loading";
 import useTitle from "../../hooks/useTitle";
+import toast from "react-hot-toast";
 
 
 const LogIn = () => {
@@ -31,11 +32,11 @@ else{
 
 
   const handleLogin = (data) => {
-    // console.log(data);
     accountLogIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
         setLogInUserEmail(data.email);
+        toast.success('Login success')
       })
       .catch((error) => setLoginError(error.message));
   };

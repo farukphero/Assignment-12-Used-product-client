@@ -30,7 +30,7 @@ const Product = ({ product, setBookingInfo, postDate, setPostDate }) => {
   };
 
   const handleReport = () => {
-    fetch("http://localhost:5000/reportedItems", {
+    fetch("https://used-product-resale-server.vercel.app/reportedItems", {
       method: "POST",
       headers: {
         "content-type": "application/json",

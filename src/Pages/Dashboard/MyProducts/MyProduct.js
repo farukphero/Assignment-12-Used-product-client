@@ -29,10 +29,11 @@ const MyProduct = ({ product, handleDelete }) => {
     date,
   };
   const handleAdvertise = () => {
-    fetch(`http://localhost:5000/advertises`, {
+    fetch(`https://used-product-resale-server.vercel.app/advertises`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem('accessToken')}`
       },
       body: JSON.stringify(advertiseProduct),
     })
@@ -44,7 +45,7 @@ const MyProduct = ({ product, handleDelete }) => {
   };
   return (
     <div>
-      (
+       
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure>
           <img className="w-full h-96 " src={image} alt="Album" />
@@ -93,7 +94,7 @@ const MyProduct = ({ product, handleDelete }) => {
           </div>
         </div>
       </div>
-      )
+      
     </div>
   );
 };

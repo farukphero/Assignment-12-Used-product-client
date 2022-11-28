@@ -2,6 +2,7 @@
 Arona., a fully Responsive resale website with react router and use firebase for authentication.
 
 # Project live link
+https://used-product-resale-d5c47.web.app/
 
 # Getting Started with Create React App
 
@@ -18,6 +19,7 @@ Use Mongodb.
 # Back-end API
 
 Use Express.js for creating back-end api and load this front-end website.
+https://used-product-resale-server.vercel.app
  
 
 

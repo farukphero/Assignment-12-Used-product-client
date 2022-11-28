@@ -11,7 +11,7 @@ const MyProducts = () => {
     queryKey: ["products", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/products?email=${user.email}`,
+        `https://used-product-resale-server.vercel.app/products?email=${user.email}`,
         {
           headers: {
             authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -31,7 +31,7 @@ const MyProducts = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      fetch(`http://localhost:5000/products/${id}`, {
+      fetch(`https://used-product-resale-server.vercel.app/products/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

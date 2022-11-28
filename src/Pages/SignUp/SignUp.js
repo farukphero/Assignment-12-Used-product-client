@@ -70,7 +70,7 @@ const SignUp = () => {
       userName,
       userEmail,
     };
-    fetch("http://localhost:5000/users", {
+    fetch("https://used-product-resale-server.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

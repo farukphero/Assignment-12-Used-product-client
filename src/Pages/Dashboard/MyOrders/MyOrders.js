@@ -9,7 +9,11 @@ const MyOrders = () => {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/bookings?email=${user.email}`)
+      .get(`https://used-product-resale-server.vercel.app/bookings?email=${user.email}`,{
+        headers: {
+          authorization: `bearer ${localStorage.getItem('accessToken')}`
+        },
+      })
       .then((data) => setOrders(data.data));
   }, [user.email]);
 
