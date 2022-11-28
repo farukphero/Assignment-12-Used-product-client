@@ -13,7 +13,7 @@ const Categories = () => {
     },[])
   return (
    <div>
-    <h1 className=" md:ml-14 text-4xl font-bold">Select Your Favorite Category : </h1>
+    <h1 className=" md:ml-40 mt-5 text-4xl font-bold">Select Your Favorite Category : </h1>
      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {
             categories.map(category=><Category

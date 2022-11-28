@@ -26,7 +26,7 @@ const AdvertiseItems = () => {
       advertises.length && (
         <div className="my-20 ">
           {advertises.length && (
-            <h1 className="text-4xl font-semibold md:ml-14 mb-5">
+            <h1 className="text-4xl font-semibold md:ml-40 mb-5">
               Advertised Items For Selling :
             </h1>
           )}
