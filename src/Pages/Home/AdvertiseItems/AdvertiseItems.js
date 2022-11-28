@@ -8,13 +8,7 @@ const AdvertiseItems = () => {
   const { data: advertises = [] } = useQuery({
     queryKey: ["advertises"],
     queryFn: async () => {
-      const res = await fetch(
-        "https://used-product-resale-server.vercel.app/advertises",{
-            headers: {
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
-              },
-        }
-      );
+      const res = await fetch("https://used-product-resale-server.vercel.app/advertises");
       const data = res.json();
       return data;
     },

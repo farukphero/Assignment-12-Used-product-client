@@ -33,3 +33,8 @@ Simply describe about  React vs. Angular vs. Vue , unit test ,prototypical inher
 # Log in
 
 For log in use email, password method, login with google.
+
+# Admin
+
+Email: farukk6323@gmail.com 
+Pass : 123456
