@@ -22,12 +22,9 @@ const SignUp = () => {
   const [token] = useToken(createdUserEmail);
 
   if(token){
+    <Loading></Loading>
     navigate(from, { replace: true });
   }
-  else{
-    <Loading></Loading>
-  }
-
   const handleSignUp = (data) => {
     setSignUpError("");
     createUserByEmail(data.email, data.password)

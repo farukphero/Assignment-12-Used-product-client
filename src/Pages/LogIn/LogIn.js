@@ -24,12 +24,10 @@ const LogIn = () => {
   const [token] = useToken(logInUserEmail)
    
 if(token){
-  navigate(from, { replace: true });
+<Loading></Loading>
+navigate(from, { replace: true });
 }
-else{
-  <Loading></Loading>
-}
-
+ 
 
   const handleLogin = (data) => {
     accountLogIn(data.email, data.password)

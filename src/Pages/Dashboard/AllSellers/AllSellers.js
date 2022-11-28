@@ -45,6 +45,7 @@ const AllSellers = () => {
     })
     .then((res) => res.json())
       .then((data) => {
+        toast.success('Verified')
         refetch()
         console.log(data);
       });

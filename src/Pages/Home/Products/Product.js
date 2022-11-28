@@ -2,12 +2,14 @@ import React, { useContext } from "react";
 import { DayPicker } from "react-day-picker";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
-import useBuyer from "../../../hooks/useBuyer";
 import { FaUserCircle } from "react-icons/fa";
+import useSeller from "../../../hooks/useSeller";
+import useAdmin from "../../../hooks/useAdmin";
 
 const Product = ({ product, setBookingInfo, postDate, setPostDate }) => {
   const { user } = useContext(AuthContext);
-  const [isBuyer] = useBuyer(user?.email);
+  const [isSeller] = useSeller(user?.email);
+  const [isAdmin] = useAdmin(user?.email);
 
   const {
     header,
@@ -105,7 +107,15 @@ const Product = ({ product, setBookingInfo, postDate, setPostDate }) => {
             </h1>
           </div>
           <div>
-            {isBuyer ? (
+            {isSeller && isAdmin ?  <p className="card-actions justify-start lg:justify-end">
+                <span className="text-red-500 font-bold">Notice</span> :
+                <span>
+                  You can not buy from this account. If you want to buy ,you
+                  must create a buyer account.
+                </span>
+              </p> :
+            
+            
               <div className=" flex justify-start lg:justify-end">
                 <div className="card-actions">
                   {!product.paid && (
@@ -129,15 +139,8 @@ const Product = ({ product, setBookingInfo, postDate, setPostDate }) => {
                   )}
                 </div>
               </div>
-            ) : (
-              <p className="card-actions justify-start lg:justify-end">
-                <span className="text-red-500 font-bold">Notice</span> :
-                <span>
-                  You can not buy from this account. If you want to buy ,you
-                  must create a buyer account.
-                </span>
-              </p>
-            )}
+             
+            }
           </div>
         </div>
       </div>

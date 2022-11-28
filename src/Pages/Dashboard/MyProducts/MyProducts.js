@@ -45,7 +45,6 @@ const MyProducts = () => {
     }
   };
  
-  // console.log(product.image)
   return (
     <div className="my-10">
       {products.map((product) => <MyProduct key={product._id}
