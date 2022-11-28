@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { DayPicker } from "react-day-picker";
 import toast from "react-hot-toast";
+import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
+import useBuyer from "../../../hooks/useBuyer";
 
 const Product = ({ product, setBookingInfo, postDate, setPostDate }) => {
+  const {user} = useContext(AuthContext)
+  const [isBuyer] = useBuyer(user?.email)
    
   const {
     header,
@@ -82,30 +86,45 @@ const Product = ({ product, setBookingInfo, postDate, setPostDate }) => {
             mode="single"
             selected={postDate}
             onSelect={setPostDate}
-            // footer={footer}
           />
           <p>
             
             <span className="font-bold text-secondary">Posted date </span>:
             {date}
           </p>
-          <div className="card-actions justify-start lg:justify-end">
-            <label
-              onClick={ handleReport}
-              // htmlFor="booking-modal"
-              className="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary"
-            >
-              Report
-            </label>
+          <div>
+          {
+            isBuyer ? <div  className=" flex justify-start lg:justify-end">
+              <div className="card-actions">
+           {
+            !product.paid &&  <label
+            onClick={handleReport}
+            className="btn mr-5 "
+          >
+            Report
+          </label> 
+           }
           </div>
           <div className="card-actions justify-start lg:justify-end">
-            <label
-              onClick={() => setBookingInfo(product, postDate)}
-              htmlFor="booking-modal"
-              className="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary"
-            >
-              Book Now
-            </label>
+           {
+            !product.paid &&  <label
+            onClick={() => setBookingInfo(product, postDate)}
+            htmlFor="booking-modal"
+            className="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary"
+          >
+            Book Now
+          </label>
+           }
+           {
+            product.paid &&  <label
+            className="btn text-white"
+          >
+             Sold
+          </label>
+           }
+          </div>
+            </div>: <p className="card-actions justify-start lg:justify-end"> <span className="text-red-500 font-bold">Notice</span> : <span >You can not buy from this account. If you want to buy ,you must create a buyer account. </span></p>
+          }
           </div>
         </div>
       </div>

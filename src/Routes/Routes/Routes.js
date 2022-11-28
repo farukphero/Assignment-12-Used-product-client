@@ -9,6 +9,7 @@ import Payment from "../../Pages/Dashboard/Dashboard/Payment/Payment";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import ReportedItems from "../../Pages/Dashboard/ReportedItems/ReportedItems";
+import AdvertiseItems from "../../Pages/Home/AdvertiseItems/AdvertiseItems";
 import Blog from "../../Pages/Home/Blog/Blog";
 import Categories from "../../Pages/Home/Categories/Categories";
 import Home from "../../Pages/Home/Home/Home";
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "/advertiseditem",
+        element: <AdvertiseItems></AdvertiseItems>,
       },
     ],
   },

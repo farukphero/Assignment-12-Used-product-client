@@ -88,15 +88,19 @@ const MyProducts = () => {
             <span className="font-bold">Post date </span>: {product?.date}
           </p>
             <div className="card-actions justify-between md:justify-end">
-            <button className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white" onClick={handleAdvertise}>Advertise</button>
+           {
+            !product.paid &&  <button className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white" onClick={handleAdvertise}>Advertise</button>
+           }
               {
-                 product.resaleprice && !product.paid &&  <Button>Availabe</Button>
+                !product.paid &&  <Button>Availabe</Button>
               }
               {
-                 product.resaleprice && product.paid &&  <Button>Sold</Button>
+                product.paid &&  <button className="btn">sold</button>
               }
              
-              <button className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white" onClick={()=>handleDelete(product._id)}>Delete</button>
+             {
+              !product.paid &&  <button className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white" onClick={()=>handleDelete(product._id)}>Delete</button>
+             }
             </div>
           </div>
         </div>

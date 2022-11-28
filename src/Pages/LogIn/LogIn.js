@@ -6,9 +6,11 @@ import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider } from "firebase/auth";
 import useToken from "../../hooks/useToken";
 import Loading from "../Shared/Loading/Loading";
+import useTitle from "../../hooks/useTitle";
 
 
 const LogIn = () => {
+  useTitle('LogIn')
   const { register, formState: { errors }, handleSubmit } = useForm();
   const { accountLogIn,providerGoogleLogIn } = useContext(AuthContext);
   const [logInError, setLoginError] = useState('')

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import useTitle from "../../../hooks/useTitle";
 import Category from "../Category/Category";
 
 const Categories = () => {
+    useTitle('Categories')
     const [categories, setCategories] = useState([])
 
     useEffect(()=>{

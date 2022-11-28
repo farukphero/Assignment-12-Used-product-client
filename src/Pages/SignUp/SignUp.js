@@ -7,8 +7,10 @@ import { GoogleAuthProvider } from "firebase/auth";
 import toast from "react-hot-toast";
 import useToken from "../../hooks/useToken";
 import Loading from "../Shared/Loading/Loading";
+import useTitle from "../../hooks/useTitle";
 
 const SignUp = () => {
+  useTitle('SignUp')
   const [signUpError, setSignUpError] = useState("");
   const { register, handleSubmit } = useForm();
   const { createUserByEmail, providerGoogleLogIn, updateUser } = useContext(AuthContext);
