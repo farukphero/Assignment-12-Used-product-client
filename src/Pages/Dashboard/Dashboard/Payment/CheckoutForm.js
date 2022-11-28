@@ -48,9 +48,6 @@ const CheckoutForm = ({ booking }) => {
       setCardError("");
       console.log("[PaymentMethod]", paymentMethod);
     }
-    //   else {
-    //
-    //   }
     setSuccess("");
     setProcessing(true);
     const { paymentIntent, error: confirmError } =

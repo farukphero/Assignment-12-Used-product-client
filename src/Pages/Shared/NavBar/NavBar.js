@@ -16,7 +16,7 @@ const NavBar = () => {
             <Link className="text-xl" to="/">Home</Link>
           </li>
       <li>
-            <Link className="text-xl" to="/advertiseditem">Advertised items</Link>
+            <Link className="text-xl" to="/advertiseditems">Advertised items</Link>
           </li>
       <li>
         <Link  className="text-xl" to="/categories">

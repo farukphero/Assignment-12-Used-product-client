@@ -4,18 +4,22 @@ import { Link, useRouteError } from "react-router-dom";
 const DisplayError = () => {
   const error = useRouteError();
   return (
-    <div className="h-[600px] md:h-[770px] md:w-[1400px] flex justify-center items-center text-3xl md:text-4xl">
-     <div>
-     <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
-      <p>
-        Page <i>{error.statusText || error.message}</i>
+    
+     <div className="md:w-[1400px] md:flex justify-center items-center">
+     <div className="md:h-[800px] flex justify-center items-center">
+    <div>
+    <h1 className="text-5xl mt-10 md:mt-0">Oops!</h1>
+      <p className="text-3xl mt-2">Sorry, an unexpected error has occurred.</p>
+      <p className="text-3xl mt-2">
+        <i className="text-red-600">Page {error.statusText || error.message}</i>
         
       </p>
-      <p  className="text-xl mt-5 text-secondary">Back to <Link className="text-xl" to='/'>Home</Link> </p>
-        <img className="mt-6 w-full" src="https://media.istockphoto.com/id/1207750534/photo/404-error-internet-page-not-found-hand-with-magnifier-concept-picture.jpg?b=1&s=170667a&w=0&k=20&c=7NG6vLfv8QzSkhVxJuIUpTUQnoUyoKH_vQbHTPS-DZ8=" alt="" />
-     </div>
+      <p  className="text-xl mt-5 text-secondary">Back to <Link className="text-xl underline" to='/'>Home</Link> </p>
     </div>
+     </div>
+        <img className="" src="https://cloud.mongodb.com/static/images/sadface.gif" alt="" />
+     </div>
+    
   );
 };
 

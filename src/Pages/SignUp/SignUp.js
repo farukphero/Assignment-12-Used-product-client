@@ -90,7 +90,7 @@ const SignUp = () => {
       <div>
         <img
           className="w-full lg:h-[600px] md:flex hidden"
-          src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=2000"
+          src="https://img.freepik.com/free-vector/version-control-concept-illustration_114360-1587.jpg?w=2000"
           alt=""
         />
       </div>
@@ -136,7 +136,7 @@ const SignUp = () => {
                 className="my-5 w-full"
                 {...register("category", { required: true })}
               >
-                <option value="">Select Category...</option>
+                <option value=""> Select your account type.</option>
                 <option value="seller">Seller</option>
                 <option value="buyer"> Buyer</option>
               </select>

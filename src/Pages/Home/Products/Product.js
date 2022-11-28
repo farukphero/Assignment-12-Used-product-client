@@ -3,11 +3,12 @@ import { DayPicker } from "react-day-picker";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import useBuyer from "../../../hooks/useBuyer";
+import { FaUserCircle } from "react-icons/fa";
 
 const Product = ({ product, setBookingInfo, postDate, setPostDate }) => {
-  const {user} = useContext(AuthContext)
-  const [isBuyer] = useBuyer(user?.email)
-   
+  const { user } = useContext(AuthContext);
+  const [isBuyer] = useBuyer(user?.email);
+
   const {
     header,
     image,
@@ -18,48 +19,41 @@ const Product = ({ product, setBookingInfo, postDate, setPostDate }) => {
     location,
     description,
     sellerName,
-    date
+    date,
+    photo,
   } = product;
-  const reportedProducts ={
+  const reportedProducts = {
     header,
     image,
     sellerName,
-    date
+    date,
+  };
 
-  }
-
-  const handleReport=()=>{
+  const handleReport = () => {
     fetch("http://localhost:5000/reportedItems", {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        // authorization: `bearer ${localStorage.getItem('accessToken')}`
+        authorization: `bearer ${localStorage.getItem('accessToken')}`
       },
       body: JSON.stringify(reportedProducts),
     })
       .then((res) => res.json())
       .then((data) => {
-        // navigate("/dashboard/myproducts");
         toast.success("Reported to admin");
         console.log(data);
       })
       .catch((error) => console.log(error));
-  }
+  };
 
   return (
     <div>
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure>
-          <img src={image} alt="Movie" />
+          <img className="w-[500px]" src={image} alt="Movie" />
         </figure>
 
         <div className="card-body lg:w-2/3">
-          <div className="card-actions justify-start lg:justify-end">
-            <h1>
-              <span className="font-bold text-secondary">Seller</span> :
-              {sellerName}
-            </h1>
-          </div>
           <h2 className="card-title">{header}</h2>
           <p> {description}</p>
           <p>
@@ -71,7 +65,8 @@ const Product = ({ product, setBookingInfo, postDate, setPostDate }) => {
             {resaleprice}
           </p>
           <p>
-            <span className="font-bold text-secondary">Purchasing year</span> : {purchase} month
+            <span className="font-bold text-secondary">Purchasing year</span> :{" "}
+            {purchase} month
           </p>
           <p>
             <span className="font-bold text-secondary">Product Condition</span>:
@@ -88,43 +83,61 @@ const Product = ({ product, setBookingInfo, postDate, setPostDate }) => {
             onSelect={setPostDate}
           />
           <p>
-            
             <span className="font-bold text-secondary">Posted date </span>:
             {date}
           </p>
+          <div className="card-actions">
+            <div className="avatar">
+              <div className="w-14 rounded-full">
+               {
+                photo && <img className="h-14 w-14" src={photo} alt='' />
+               }
+               {
+                !photo && <FaUserCircle className="mr-2 w-14 h-14" />
+               }
+              </div>
+            </div>
+            <h1 className="uppercase flex">
+              <span className="font-bold ">Seller</span> : {sellerName}
+              {
+                product.status && <img className="h-4 w-4 ml-2 mt-1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcW0f5i2rAwBrpTF-KpmJfpGnNAsVwxaYIcIm2gvdRbg&s" alt="" />
+              }
+            </h1>
+          </div>
           <div>
-          {
-            isBuyer ? <div  className=" flex justify-start lg:justify-end">
-              <div className="card-actions">
-           {
-            !product.paid &&  <label
-            onClick={handleReport}
-            className="btn mr-5 "
-          >
-            Report
-          </label> 
-           }
-          </div>
-          <div className="card-actions justify-start lg:justify-end">
-           {
-            !product.paid &&  <label
-            onClick={() => setBookingInfo(product, postDate)}
-            htmlFor="booking-modal"
-            className="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary"
-          >
-            Book Now
-          </label>
-           }
-           {
-            product.paid &&  <label
-            className="btn text-white"
-          >
-             Sold
-          </label>
-           }
-          </div>
-            </div>: <p className="card-actions justify-start lg:justify-end"> <span className="text-red-500 font-bold">Notice</span> : <span >You can not buy from this account. If you want to buy ,you must create a buyer account. </span></p>
-          }
+            {isBuyer ? (
+              <div className=" flex justify-start lg:justify-end">
+                <div className="card-actions">
+                  {!product.paid && (
+                    <label onClick={handleReport} className="btn mr-5 ">
+                      Report
+                    </label>
+                  )}
+                </div>
+                <div className="card-actions justify-start lg:justify-end">
+                  {!product.paid && (
+                    <label
+                      onClick={() => setBookingInfo(product, postDate)}
+                      htmlFor="booking-modal"
+                      className="btn btn-primary text-white bg-gradient-to-r from-primary to-secondary"
+                    >
+                      Book Now
+                    </label>
+                  )}
+                  {product.paid && (
+                    <label className="btn text-white">Sold</label>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <p className="card-actions justify-start lg:justify-end">
+                <span className="text-red-500 font-bold">Notice</span> :
+                <span>
+                  You can not buy from this account. If you want to buy ,you
+                  must create a buyer account.
+                </span>
+              </p>
+            )}
           </div>
         </div>
       </div>

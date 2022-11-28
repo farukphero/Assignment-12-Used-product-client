@@ -1,13 +1,14 @@
 import { format } from "date-fns";
 import React, { useContext, useState } from "react";
-import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
+import useTitle from "../../../hooks/useTitle";
 
 const AddProduct = () => {
+  useTitle('Dashboard/AddProducts')
   
-  const { register, handleSubmit } = useForm();
+  // const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [postDate, setPostDate] = useState(new Date());
@@ -18,6 +19,7 @@ const AddProduct = () => {
     event.preventDefault()
     const form = event.target;
     const email = user.email;
+    const photo = user.photoURL;
     const date = form.date.value;
     const sellerName= form.sellerName.value;
     const category = form.category.value;
@@ -32,7 +34,7 @@ const AddProduct = () => {
     const description = form.description.value;
 
 
-    const newAddedProducts ={email, date, sellerName, category, header, image, originalprice, resaleprice, purchase, phone, location, condition, description}
+    const newAddedProducts ={photo,email, date, sellerName, category, header, image, originalprice, resaleprice, purchase, phone, location, condition, description}
 
  
  

@@ -55,7 +55,7 @@ else{
       <div>
         <img
           className="w-full lg:h-[600px] md:flex hidden"
-          src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=2000"
+          src="https://img.freepik.com/free-vector/version-control-concept-illustration_114360-1587.jpg?w=2000"
           alt=""
         />
       </div>

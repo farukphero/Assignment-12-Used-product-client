@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
         element: <SignUp></SignUp>,
       },
       {
-        path: "/advertiseditem",
+        path: "/advertiseditems",
         element: <AdvertiseItems></AdvertiseItems>,
       },
     ],
