@@ -8,7 +8,7 @@ import Categories from '../Categories/Categories';
 const Home = () => {
     useTitle('Home')
     return (
-        <div className='bg-secondary bg-opacity-10'>
+        <div>
             <Banner></Banner>
             <Brands></Brands>
             <Categories></Categories>

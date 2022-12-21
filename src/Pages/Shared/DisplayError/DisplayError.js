@@ -5,7 +5,7 @@ const DisplayError = () => {
   const error = useRouteError();
   return (
     
-     <div className="md:w-[1400px] md:flex justify-center items-center">
+     <div className="md:w-[1400px] md:flex justify-center items-center w-11/12 mx-auto">
      <div className="md:h-[800px] flex justify-center items-center">
     <div>
     <h1 className="text-5xl mt-10 md:mt-0">Oops!</h1>

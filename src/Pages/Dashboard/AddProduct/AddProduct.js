@@ -56,7 +56,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="lg:flex justify-center">
+    <div className="w-11/12 mx-auto lg:flex justify-center">
       <div>
         <h1 className="text-4xl mt-12 mb-6 text-secondary">
           Add Your Products

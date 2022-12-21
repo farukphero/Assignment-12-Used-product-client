@@ -14,7 +14,7 @@ const MyOrders = () => {
   }, [user.email]);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-14 mb-28">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-14 mb-28 w-11/12 mx-auto">
       {
         orders.length? orders.map((order) => (
           <Order key={order._id} order={order}></Order>

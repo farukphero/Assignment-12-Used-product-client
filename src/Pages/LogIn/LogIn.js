@@ -50,7 +50,7 @@ navigate(from, { replace: true });
       .catch((error) => console.log(error));
   }
   return (
-    <div className="lg:flex justify-center">
+    <div className="w-11/12 mx-auto lg:flex justify-center">
       <div>
         <img
           className="w-full lg:h-[600px] md:flex hidden"

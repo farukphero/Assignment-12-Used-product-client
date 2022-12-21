@@ -83,7 +83,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="lg:flex justify-center mb-24 mt-12">
+    <div className="lg:flex justify-center mb-24 mt-12 w-11/12 mx-auto">
       <div>
         <img
           className="w-full lg:h-[600px] md:flex hidden"

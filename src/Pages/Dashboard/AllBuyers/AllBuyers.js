@@ -49,7 +49,7 @@ const AllBuyers = () => {
     }
   };
   return (
-    <div className="mb-20 mt-10">
+    <div className="mb-20 mt-10 w-11/12 mx-auto">
       <div className="overflow-x-auto">
         <table className="table w-full">
           {/* <!-- head --> */}

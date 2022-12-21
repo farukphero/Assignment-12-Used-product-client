@@ -11,7 +11,7 @@ const Payment = () => {
   const {header, image, price } = booking;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 w-11/12 mx-auto">
       <div className="card  bg-base-100 shadow-xl">
         <figure>
           <img className="w-96 h-96" src={image} alt="Album" />

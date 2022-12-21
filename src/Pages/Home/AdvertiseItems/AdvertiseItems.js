@@ -15,16 +15,16 @@ const AdvertiseItems = () => {
   });
 
   return (
-    <div>
+    <div className="">
       {
       advertises.length && (
-        <div className="my-20 ">
+        <div className="my-20">
           {advertises.length && (
             <h1 className="text-4xl font-semibold md:ml-40 mb-5">
               Advertised Items For Selling :
             </h1>
           )}
-          <div className="grid grid-cols-1 md:grid-cols-2  gap-5 bg-white">
+          <div className="grid grid-cols-1 md:grid-cols-2  gap-5 bg-white w-11/12 mx-auto">
             {advertises.length &&
               advertises.map((advertise) => (
                 <AdvertiseItem

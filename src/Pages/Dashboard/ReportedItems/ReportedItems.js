@@ -32,7 +32,7 @@ const ReportedItems = () => {
   };
   return (
     <div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto w-11/12 mx-auto mt-12">
         <table className="table w-full">
           <thead>
             <tr>
